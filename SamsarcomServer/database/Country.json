@@ -1,0 +1,2 @@
+{ "_id" : { "$oid" : "5ab1fc262c1c50037e87adf9" }, "name" : "Morocco" }
+{ "_id" : { "$oid" : "5ab1fc482c1c50037e87adfd" }, "name" : "Turkey" }

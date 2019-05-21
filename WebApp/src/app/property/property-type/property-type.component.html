@@ -1,0 +1,99 @@
+	
+<div class="row justify-content-center">
+    <div class="col-md-8 col-12">
+        <div class="card my-5 shadow">
+            <div class="page-header text-center">
+                <h2 class="font-patua text-center margin-top-20"><i class="far fa-building margin-right-10"></i>Create Property Type</h2>	
+            </div>
+            <div class="card-body">
+
+                <fieldset class="margin-top-10">
+
+                    <form #createPropertyTypeForm="ngForm" (submit)="create()">
+                        <div class="form-group">
+                            <!-- <label for="name">Language</label> -->
+                            <input type="text" [(ngModel)]="propertyType.name" name="name" id="name" placeholder="Enter Name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <!-- <label for="language">Language</label> -->
+                            <input type="text" [(ngModel)]="propertyType.language" name="language" id="language" placeholder="Enter Language" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <!-- <label for="description">Description</label> -->
+                            <textarea [(ngModel)]="propertyType.description" name="description" id="description" class="form-control" placeholder="Enter Description"></textarea>
+                        </div>
+                        <div class="col-12 text-center py-4 mt-3">
+                            <button type="submit" class="btn btn-block btn-samsar font-18">Add Property Type</button>
+                        </div>
+                    </form>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="my-container">
+        <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px',fullScreenBackdrop:true }"></ngx-loading>
+    </div>
+    <div class="row justify-content-center">
+        <h2 class="text-center margin-top-20 font-patua"><i class="fas fa-list-alt margin-right-10"></i>Property Type List</h2>
+    </div>
+
+    <div class="row justify-content-center margin-bottom-20" *ngIf="Type.length>0">
+        <div class="col-12 col-md-3" *ngFor="let ptype of Type">
+             <div class="card my-2">
+                <div class="card-header samsar-font font-18">
+                    {{ptype.name}}
+                    <div class="float-right">
+                        <a (click)="openModal(ptype)" title="Update"><i class="fas fa-edit samsar-font"></i></a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table>
+                        <tr>
+                            <td class="font-16">Language:</td>
+                            <td class="font-16">{{ptype.language}}</td>
+                        </tr>
+                        <tr>
+                            <td class="font-16">Discription:</td>
+                            <td class="font-16">{{ptype.description}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="updatePropertyType" tabindex="-1" role="dialog" aria-labelledby="updatePropertyType" aria-hidden="true" style="margin-top: 100px !important;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title samsar-font" id="updatePropertyType">Update Property Type</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #updatePropertyTypeForm="ngForm" (submit)="update()">
+                    <div class="form-group">
+                        <label for="name" class="samsar-font">Language</label>
+                        <input type="text" [(ngModel)]="updateType.name" name="name" id="name" placeholder="Enter Name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="language" class="samsar-font">Language</label>
+                        <input type="text" [(ngModel)]="updateType.language" name="language" id="language" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="description" class="samsar-font">Description</label>
+                        <textarea [(ngModel)]="updateType.description" name="description" id="description" class="form-control"></textarea>
+                    </div>
+                    <div class="text-center" style="margin:20px;">
+                        <button type="submit" class="btn btn-samsar">Update Property Type</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

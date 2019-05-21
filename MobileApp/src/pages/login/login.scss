@@ -1,0 +1,41 @@
+page-login {
+    .background{
+        background-image: url('../assets/imgs/background(2).jpg');
+        background-repeat: no-repeat;
+        background-size:100% 100%;
+        background-position:center bottom;
+    }
+
+    .item-md.item-input.item-input-has-focus .item-inner, .item-md.item-input.item-input-has-focus .item-inner{
+        border-bottom-color: #0b7997;
+        box-shadow: inset 0 -1px 0 0 #0b7997;
+    }
+
+    .btn{
+        cursor: pointer !important;
+        color: white !important;
+        font-size: 20px !important;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .image{
+            height: 250px !important;
+            width: 100%;
+        }
+    }
+
+    @media only screen and (min-width:320px)  {
+        .title-ios{
+            margin-top:0px !important;
+        }
+    }
+
+
+
+
+}
+
+.bg_input .item-ios {
+    background-color:rgba(255,255,255,0.7);
+    border: 1px solid #d9dbdc;
+    }

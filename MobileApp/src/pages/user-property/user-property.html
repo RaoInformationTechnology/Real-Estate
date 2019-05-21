@@ -1,0 +1,111 @@
+<ion-header>
+
+	<ion-navbar color="myColor">
+		<ion-title>My Properties</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+	<div class="d-flex" *ngIf="allProperty.length>0">
+		<ion-card *ngFor="let property of allProperty">
+			<ion-card-content class="design">
+				<div *ngIf="property.images.length<=0" (click)="propertyDetails(property)">
+					<img src="./assets/imgs/noImage.png" alt="imagesUrl" class="img-fluid fix-heigth">
+				</div>
+				<div *ngIf="property.images.length>0" (click)="propertyDetails(property)">
+					<img class="img-fluid fix-heigth" [src]="image_url + property.images[0]" onerror="this.src='./assets/imgs/noImage.png'" alt="imagesUrl">
+				</div>
+
+				<div class="property text" (click)="propertyDetails(property)">
+					<p class="text" *ngIf= "property.uniqueId"><strong><span class="margin-left-5">{{property.uniqueId}}</span></strong>
+					</p>
+					<p class="text" *ngIf= "!property.uniqueId"><strong><span>Id:</span><span class="margin-left-5">TR-2018-2</span></strong>
+					</p>
+				</div>
+
+				<div class="property" (click)="propertyDetails(property)">
+					<ion-row>
+						<ion-col col-4>
+							<strong>Price :</strong>
+						</ion-col>
+						<ion-col col-8>
+							&euro; {{property.price}}
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col col-4>
+							<strong>Area Size :</strong>
+						</ion-col>
+						<ion-col col-8>
+							{{property.area}} - Rooms: {{property.rooms}}
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col col-4>
+							<strong>Property Type:</strong>
+						</ion-col>
+						<ion-col col-8>
+							{{property.propertyType.name}}
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col col-4>
+							<strong>Address :</strong>
+						</ion-col>
+						<ion-col col-8>
+							{{property.propertyAddress}}
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col col-4>
+							<strong>Postal Code :</strong>
+						</ion-col>
+						<ion-col col-8>
+							{{property.postalCode}}
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col col-4>
+							<strong>City :</strong>
+						</ion-col>
+						<ion-col col-8>
+							{{property.city.name}}
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col col-4>
+							<strong>Country :</strong>
+						</ion-col>
+						<ion-col col-8>
+							{{property.country.name}}
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col col-4>
+							<strong>Status :</strong>
+						</ion-col>
+						<ion-col col-8>
+							{{property.status}}
+							<!-- <span *ngIf="property.status == 'Available'"><i class="fa fa-check"></i></span><span *ngIf="property.status == 'Unavailable'"><i class="fa fa-ban"></i></span> -->
+						</ion-col>
+					</ion-row>
+				</div>
+				<ion-row justify-content-between>
+					<a class="width-half" ion-button color="myColor" float-left href="tel:+32 489088585"><i class="fas fa-phone fa-flip-horizontal" margin-right></i>Call</a>
+					<a class="width-half" ion-button color="myColor" float-right href="mailto:info@samsarcom.be" target="_top"><i class="far fa-envelope" margin-right></i>Email</a>
+				</ion-row>
+			</ion-card-content>
+		</ion-card>
+	</div>
+	<div text-center class="height-full" *ngIf="allProperty.length<=0">
+		<ion-label>
+			<h2>No Properties!!!</h2>
+		</ion-label>
+	</div>
+	<ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="finishInfiniteScroll==true">
+		<ion-infinite-scroll-content loadingSpinner="bubbles"
+		loadingText="Loading more data..."></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</ion-content>

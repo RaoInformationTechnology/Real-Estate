@@ -1,0 +1,77 @@
+<div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px',fullScreenBackdrop:true }"></ngx-loading>
+</div>
+<div class="row justify-content-center margin-bottom-10">
+    <div class="col-11 col-sm-11 col-md-11">
+        <div class="page-header text-center">
+            <h2 class="font-patua margin-top-20 margin-bottom-20"><i class="fa fa-warehouse margin-right-10"></i>Un-Verified Properties</h2>
+
+        </div>
+        <div class="row" *ngIf="count<=0">
+            <h2 class="text-center">No More Properties to Verify</h2>
+        </div>
+        <div class="row" *ngIf="unavailableProperty">
+            <div class="card col-md-12 col-12">
+                <!-- <div class="row"> -->
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover" style="text-align: left;">				
+                        <thead>
+                            <tr class="tb-header font-18 text-bold">
+                                <th>#</th>
+                                <th>Agent / User</th>
+                                <th>Unique ID</th>
+                                <th>Phone</th>
+                                <th>Company</th>
+                                <th>Type</th>
+                                <th>City</th>
+                                <th>Country</th>
+                                <th>Prize</th>
+                                <th>Operations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-center" *ngFor="let property of unavailableProperty; let i=index ">
+                                <td>{{(pager.currentPage-1)*15+i+1}}</td>
+                                <td *ngIf="property.agent">{{property.agent.firstName}} {{property.agent.lastName}}</td>
+                                <td>{{property.uniqueId}}</td>
+                                <td *ngIf="property.agent">{{property.agent.mobile}}</td>
+                                <td *ngIf="property.agent">{{property.agent.company}}</td>
+                                <td *ngIf="property.propertyType">{{property.propertyType.name}}</td>
+                                <td *ngIf="property.city">{{property.city.name}}</td>
+                                <td *ngIf="property.country">{{property.country.name}}</td>
+                                <td>&euro; {{property.price}}</td>
+                                <td>
+                                    <a routerLink="/propertyDetails/{{property._id}}"><i class="fa fa-eye text-primary margin-right-5 cursor-pointer" title="View Details"></i></a>
+                                    <a (click)="approveProperty(property)"><i class="far fa-edit text-danger cursor-pointer"  title="Verify Property"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- </div> -->
+
+            </div>
+        </div>
+        <div class="row justify-content-center" style="z-index: 0;">
+            <div class="col-md-12 col-sm-12 col-12">
+                <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                    <li [ngClass]="{disabled:pager.currentPage === 1}" class="list-item">
+                        <a class="page-link" (click)="setPage(1)">First</a>
+                    </li>
+                    <li [ngClass]="{disabled:pager.currentPage === 1}" class="list-item">
+                        <a class="page-link" (click)="setPage(pager.currentPage - 1)">Previous</a>
+                    </li>
+                    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="list-item">
+                        <a class="page-link" (click)="setPage(page)">{{page}}</a>
+                    </li>
+                    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="list-item">
+                        <a class="page-link" (click)="setPage(pager.currentPage + 1)">Next</a>
+                    </li>
+                    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="list-item">
+                        <a class="page-link" (click)="setPage(pager.totalPages)">Last</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

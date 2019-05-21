@@ -1,0 +1,267 @@
+<div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px',fullScreenBackdrop:true }"></ngx-loading>
+</div>
+<div class="container">
+    <div class="col-sm-12 col-md-12">
+        <div class="page-header">
+            <h2 class="font-patua text-center margin-top-20"><i class="fas fa-info margin-right-10"></i> Property Details</h2>	
+        </div>
+        <div id="noProperty" class="row justify-content-center ">
+            <div class="col-12 margin-top-20" >
+                <h3 class="font-patua text-center margin-top-20" style="margin-top: 30px;">No Property Details Found</h3>
+
+            </div>
+        </div>
+        <div id="property" class="row" *ngIf="property">
+            <div class="col-md-6 col-sm-12 margin-top-10 margin-bottom-10" >
+                <agm-map 
+                    [latitude]="lat"
+                    [longitude]="lng"
+                    [zoom]="zoom"
+                    [disableDefaultUI]=false
+                    [zoomControl]=true>
+                    <agm-marker 
+                        [latitude]="lat"
+                        [longitude]="lng"
+                        [markerDraggable]=false>
+                    <agm-info-window>
+                    <span class="font-16 margin-bottom-5" style="text-align: left !important;"><strong>ID: {{property.uniqueId}}</strong></span><br>
+                            <span class="font-16 margin-bottom-5" style="text-align: left !important;">Address: {{property.propertyAddress}}</span><br>
+                            <span class="font-16 margin-bottom-5" style="text-align: left !important;">Price: <strong><i class="fas fa-euro-sign font-11 margin-bottom-2"></i></strong> {{property.price}}{{property}}</span>
+                        </agm-info-window>
+                    </agm-marker>
+                </agm-map>
+            </div>
+            <div class="col-md-6 col-sm-12 margin-top-10 margin-bottom-10">
+                <div class="card">
+                    <div class="m-2 d-flex justify-content-center" *ngIf="property.images.length<=1">
+                        <img class="img-fluid fix-heigth" src="assets/images/noImage.png" alt="imagesUrl">
+                    </div>
+                    <div class="m-2 d-flex justify-content-center" *ngIf="property.images.length>1">
+                        <div id="carouselControls" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div *ngFor="let image of property.images; let k = index " [ngClass]="k==0?'carousel-item active':'carousel-item'">
+                                    <img class="img-fluid fix-heigth" [src]="image_url + image" onerror="this.src='./assets/images/noImage.png'" alt="imagesUrl">
+                                </div>
+
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselControls" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselControls" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                    <fieldset>
+                        <div class="col-sm-12 col-md-12 text-left">
+                            <div class="row">
+
+                                <div class="font-Palatino" style="margin: 0px auto 0px 0px;" *ngIf= "property.uniqueId"><strong><span class="margin-left-5">{{property.uniqueId}}</span></strong>
+                                </div>
+                                <div class="font-Palatino" style="margin: 0px 0px 0px auto;" *ngIf = 'userType == 0 || userId == property.agent._id' (click)="varifyProperty(property)">
+                                     <span class="badge badge-danger padding-5" *ngIf= "!property.verify"><strong>Unverified</strong></span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <div class="col-sm-12 col-md-12 text-left">
+                            <label class="font-Trebuchet text-bold font-18  no-padding" style="color: #bbbbb8 !important;">Property Details</label>
+                            <table width="100%" style="height: 200px; overflow-y: auto;">
+                                <tr> 
+                                    <td width="30%" class="align-top">
+                                        Price :	
+                                    </td>
+                                    <td width="70%">
+                                        &euro; {{property.price}} <span *ngIf= "property.garage == true" class="margin-left-5"><br>Garage Included</span><span *ngIf= "property.garden == true" class="margin-left-5"><br>Garden Included</span><span *ngIf= "property.swimmingPool == true" class="margin-left-5"><br>Swimming Pool Included</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Property Type :
+                                    </td>
+                                    <td>
+                                        {{property.propertyType.name}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Area Size :
+                                    </td>
+                                    <td>
+                                        {{property.area}} - Rooms: {{property.rooms}}							
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td class="align-top">
+                                        Address : 
+
+                                    </td>
+                                    <td>
+                                        {{property.propertyAddress}}
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Postal Code : 
+
+                                    </td>
+                                    <td>
+                                        {{property.postalCode}}
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        City : 
+                                    </td>
+                                    <td>
+                                        {{property.city.name}}
+                                    </td>
+
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Country : 		
+                                    </td>
+                                    <td>
+                                        {{property.country.name}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Status :		
+                                    </td>
+                                    <td>
+                                        {{property.status}}	
+                                    </td>
+                                </tr>
+                                <tr *ngIf = '(userType == 0 || userId == property.agent._id) && property.verify'>
+                                    <td>
+                                        Expire At :		
+                                    </td>
+                                    <td>
+                                        {{expiryDate}}	
+                                    </td>
+                                </tr>
+                                <tr *ngIf = '(userType == 0 || userId == property.agent._id) && property.verify'>
+                                    <td>
+                                        Publication Date :		
+                                    </td>
+                                    <td>
+                                        {{PublicationDate}}	
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset *ngIf = 'userType == 2 || userType == 1 && userId != property.agent._id'>
+                        <div class="col-sm-12 col-md-12 text-left">
+                            <label class="font-Trebuchet text-bold font-18 no-padding" style="color: #bbbbb8 !important;">Contact Details</label>
+                            <table width="100%" style="height: auto; overflow-y: auto;">
+
+                                <tr>
+                                    <td>
+                                        Mobile Number : 
+                                    </td>
+                                    <td>
+                                        +32 489088585
+                                    </td>
+                                </tr>										
+                                <tr>
+                                    <td>
+                                        Email Address : 					
+                                    </td>				
+                                    <td>
+                                        info@samsar.be
+                                    </td>			
+                                </tr>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <fieldset *ngIf = 'userType == 0 || userId == property.agent._id'>
+                        <div class="col-sm-12 col-md-12 text-left">
+                            <label class="font-Trebuchet text-bold font-18 no-padding" style="color: #bbbbb8 !important;">Contact Details</label>
+                            <table style="height: auto; overflow-y: auto;">
+                                <tr>
+                                    <td>
+                                        Name : 
+                                    </td>
+                                    <td>
+                                        {{property.agent.firstName}} {{property.agent.lastName}}
+                                    </td>
+                                </tr>						
+                                <tr>
+                                    <td>
+                                        Company / Agency : 
+                                    </td>
+                                    <td>
+                                        {{property.agent.company}}
+                                    </td>
+                                </tr>				
+                                <tr>
+                                    <td>Office Number :</td>
+                                    <td> 
+                                        {{property.agent.phone}}
+                                    </td>
+                                </tr>			
+                                <tr>
+                                    <td>
+                                        Mobile Number : 
+                                    </td>
+                                    <td>{{property.agent.mobile}}
+                                    </td>
+                                </tr>										
+                                <tr>
+                                    <td>
+                                        Email Address :
+                                    </td>
+                                    <td>
+                                        {{property.agent.email}}
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </fieldset>
+                    <div class="container" *ngIf="userType == 1">
+                        <a class="col-6 btn btn-contact float-left" href="tel:+32 489088585"><i class="fas fa-phone fa-flip-horizontal margin-right-10"></i>Phone </a>
+                        <a class="col-6 btn btn-contact float-right" href="mailto:info@samsarcom.be"><i class="fas fa-envelope margin-right-10"></i> Email </a>
+                    </div>
+                    <div class="container" *ngIf="userType == 0">
+                        <a class="col-6 btn btn-contact float-left" href="tel: {{property.agent.phone}}"><i class="fas fa-phone fa-flip-horizontal margin-right-10"></i>Phone</a>
+                        <a class="col-6 btn btn-contact float-right" href="mailto:{{property.agent.email}}" target="_top"><i class="fas fa-envelope margin-right-10"></i>Email</a>
+                    </div>
+
+                    <div class="container margin-top-10 margin-bottom-10" *ngIf="property.agent != null || userType == 0">
+                         <a *ngIf=" userId == property.agent._id || userType == 0" [ngClass]="userType==0?'col-12 col-md-6 btn btn-success w3-text-white':'col-12 col-md-6 btn btn-success w3-text-white'" (click)="update(property)" style="border: 1px solid white"><i class="fas fa-edit"></i> Edit
+                        </a>
+                        <a *ngIf="property.buyRent == 'Buy' && property.status != 'Sold' && userType == 0" [ngClass]="userType==0?'col-12 col-md-6 btn btn-info w3-text-white':'col-12 col-md-6 btn btn-info w3-text-white'" (click)="togglestatus(property,'Sold')" style="border: 1px solid white"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            Sold
+                        </a>
+                        <a *ngIf="property.buyRent == 'Rent' && property.status != 'Rented' && userType == 0" [ngClass]="userType==0?'col-12 col-md-6 btn btn-info w3-text-white':'col-12 col-md-6 btn btn-info w3-text-white'" (click)="togglestatus(property,'Rented')" style="border: 1px solid white"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            Rented
+                        </a>
+                        <a *ngIf="property.status != 'Unavailable' && userType == 0" [ngClass]="userType==0?'col-12 col-md-6 btn btn-info w3-text-white':'col-12 col-md-6 btn btn-info w3-text-white'" (click)="togglestatus(property,'Unavailable')" style="border: 1px solid whitea"><i class="fa fa-ban"></i>
+                            Unavailable
+                        </a>
+                        <a *ngIf="property.status != 'Available' && userType == 0" [ngClass]="userType==0?'col-12 col-md-6 btn btn-success w3-text-white':'col-12 col-md-6 btn btn-success w3-text-white'" (click)="togglestatus(property,'Available')" style="border: 1px solid white">
+                            <i class="fas fa-check margin-right-5"></i> Available
+                        </a>
+                        <a *ngIf="userType == 0 ||  userId == property.agent._id" [ngClass]="userType==0?'col-12 col-md-6 btn btn-danger w3-text-white':'col-12 col-md-6 btn btn-danger w3-text-white'" (click)="deleteProperty(property._id)" style="border: 1px solid white"><i class="fa fa-trash margin-right-5"></i>
+                            Remove
+                        </a>				
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

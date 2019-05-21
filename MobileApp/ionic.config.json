@@ -1,0 +1,7 @@
+{
+  "name": "samsarApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

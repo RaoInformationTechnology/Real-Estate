@@ -1,0 +1,72 @@
+<div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px',fullScreenBackdrop:true }"></ngx-loading>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-8 col-11">
+        <div class="card my-5 shadow">
+            <div class="card-body">
+                <div class="page-header text-center margin-top-20 margin-bottom-20">
+                    <h2 class="font-patua"><i class="fas fa-edit"></i> Update Your's Details</h2>
+                </div>
+                <form class="form-forizontal" #userUpdateForm="ngForm" (ngSubmit)="update(userToUpdate)" *ngIf="userToUpdate">
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="fname">First Name</label>
+                            <input type="text" id="fname" class="form-control" [(ngModel)]="userToUpdate.firstName" name="firstName">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="lname">Last Name</label>
+                            <input type="text" id="lname" class="form-control" [(ngModel)]="userToUpdate.lastName" name="lastName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" class="form-control md-textarea" [(ngModel)]="userToUpdate.address" name="address"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="postalCode">Postal Code</label>
+                        <input type="text" id="postalCode" class="form-control" [(ngModel)]="userToUpdate.postalCode" name="postalCode">
+                    </div>
+                    <div class="form-group" ng2-auto-complete [source]="Countries" (valueChanged)="valueChangedOfCountry($event)">
+                         <input type="text" id="country" class="form-control" [(ngModel)]="userToUpdate.country" name="country" placeholder="Enter Country" autocomplete="off">
+                    </div>
+                    <div class="form-group" ng2-auto-complete [source]="City" (valueChanged)="valueChangedOfCity($event)">
+                         <input type="text" id="city" class="form-control" [(ngModel)]="userToUpdate.city" name="city" placeholder="Enter City" autocomplete="off">
+
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="state" class="form-control" [(ngModel)]="userToUpdate.state" name="state" placeholder="Enter State">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email ID</label>
+                        <input type="email" id="email" class="form-control" [(ngModel)]="userToUpdate.email" name="email">
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="phone">Phone No:</label>
+                            <input type="text" id="phone" class="form-control" [(ngModel)]="userToUpdate.phone" name="phone">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="mobile">Mobile No:</label>
+                            <input type="text" id="mobile" class="form-control" [(ngModel)]="userToUpdate.mobile" name="mobile">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company</label>
+                        <input type="text" id="company" class="form-control" [(ngModel)]="userToUpdate.company" name="company">
+                    </div>
+                    <div class="form-group">
+                        <label for="admin">Admin</label>
+                        <input type="text" id="admin" class="form-control" [(ngModel)]="userToUpdate.admin" name="admin">
+                    </div>
+                    <!-- </div> -->
+                    <div class="text-center py-4 mt-3">
+                        <button type="submit" class="btn btn-samsar">Update Your Profile
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

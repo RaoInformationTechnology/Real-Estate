@@ -1,0 +1,101 @@
+page-update-property {
+	.border{
+		border: 1px solid #d9dbdc;
+		height: 10px;
+		margin: 5px 0 5px 0;
+	}
+
+	.border-round{
+		border: 1px solid #d9dbdc;
+		border-radius: 5px;
+		height: 10px;
+		margin: 5px 0 5px 0;
+	}
+
+	.samsar-btn{
+		background-color: #0b7997;
+	}
+
+	.bg-color{
+		background-color: #0b7997;
+	}
+
+	.hidden{
+		display: none;
+	}
+
+	ion-toggle{
+		$toggle-background-color-on: #0b7997;
+	}
+
+	.label-md {
+    margin: 13px 0px 13px 0;
+	}
+
+	.item-md .item-button {
+    padding: 0 0.6em;
+    height: 36px;
+    font-size: 1.2rem;
+	}
+
+	.toggle-md.toggle-checked .toggle-icon {
+   		background-color: rgb(170,170,170);
+	}
+
+	.toggle-md.toggle-checked .toggle-inner {
+    -webkit-transform: translate3d(16px, 0, 0);
+    transform: translate3d(16px, 0, 0);
+    background-color: #0b7997;
+	}
+
+	.margin{
+		margin-right: 15px !important;
+	}
+
+	.select-text{
+		color: gray;
+	}
+
+	.text{
+		font-size: 20px;
+	}
+
+	ion-item.item-md.item-block .item-inner {
+		padding-right: 8px;
+		border-bottom: none;
+	}
+
+	.background{
+		background-image: url('../assets/imgs/background(2).jpg');
+		background-repeat: no-repeat;
+		background-size:100% 100%;
+		background-position:center bottom;
+	}
+
+	fieldset {
+		max-width:500px;
+		border: 1.5px solid darkgrey; 
+		padding:8px;
+		margin-bottom: 10px !important;
+		border-radius: 5px; 
+	}
+
+	a {
+		cursor: pointer;
+	}
+
+	.font-Impact {
+		font-family : "Impact";
+	}
+}
+
+.title-responsive {
+    font-family: -apple-system, "Helvetica Neue", "Roboto", sans-serif;
+    text-align: center !important;
+    font-weight: 500;
+    letter-spacing: normal;
+    text-transform: uppercase;
+    color: #000;
+    margin: 11px 8px 11px 0;
+    font-size:17px !important;
+}

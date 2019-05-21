@@ -1,0 +1,70 @@
+<div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px',fullScreenBackdrop:true }"></ngx-loading>
+</div>
+<div class="container">
+    <div class="col-md-12 col-sm-12 margin-top-20 margin-bottom-10">
+
+        <div class="page-header text-center">
+            <h2 class="font-patua"><i class="fa fa-users margin-right-5"></i> User List</h2>
+        </div>
+
+
+
+        <div class="row margin-top-10" *ngIf="allUsers.length > 0">
+            <div id="alluser" class="col-sm-6 col-md-4 col-xs-12 margin-top-10" *ngFor ="let user of allUsers">
+                 <div class="card mb-3 cursor-pointer">
+                    <div class="card-header " (click) = "viewDetails(user._id)" style="background-color: #F8F8FF ;">
+
+                        <h5 class="font-Impact text-center respon_title">
+                            <span class="w3-left badge badge-secondary" title="Properties by user">{{user.propertyCount}}</span>
+                            <span class="w3-center">{{user.firstName}} {{user.lastName}}</span>
+                            <span class="w3-right" *ngIf="user.userStatus == 'false'" title="User status"> <span class="badge badge-danger">Blocked</span></span>
+                            <span class="w3-right" *ngIf="user.userStatus == 'true'" title="User status"> <span class="badge badge-success">Active</span></span>
+                        </h5>
+                    </div>
+
+                    <div class="card-body  cursor-pointer" (click) = "viewDetails(user._id)" title="Click Here For User Details">
+                        <table class="respo_settings" style="height: auto; overflow-y: auto; width: 100%; text-align: left; font-size: 14px;">
+                            <tr class="font-16">
+                                <td class="font-Trebuchet citystatecountry">
+                                    City :
+                                </td>
+                                <td class="font-Verdana citystatecountry">
+                                    {{user.city}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="font-Trebuchet font-16 citystatecountry">
+                                    State :
+                                </td>
+                                <td class="font-Verdana font-16 margin-left-5 citystatecountry">
+                                    {{user.state}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="font-Trebuchet font-16 citystatecountry">
+                                    Country : 
+                                </td>
+                                <td class="font-Verdana font-16 margin-left-5 citystatecountry">
+                                    {{user.country}}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">
+                            <a href="tel: {{user.phone}}" class="float-left cursor-pointer font-14"><i class="fas fa-phone fa-flip-horizontal margin-right-5"></i>{{user.phone}}</a>
+                            <a class="butt float-right cursor-pointer font-14" href="mailto: {{user.email}}" target="_top"><i class="fas fa-envelope margin-right-5"></i>{{user.email}}</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 		<div class="text-center margin-top-25 margin-bottom-25" *ngIf="allUsers.length == 0">
+                                <span class="font-24"><i class="fa fa-search"></i>&nbsp;No User Found</span>
+                        </div> -->
+        <!-- <div class="text-center margin-top-25 margin-bottom-25" *ngIf="allUsers.length <= 0">
+                <span class="font-24 text-center"><i class="fa fa-spinner fa-spin "></i>&nbsp;Loading</span>
+        </div> -->
+    </div>
+</div> 

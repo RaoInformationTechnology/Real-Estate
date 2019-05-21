@@ -1,0 +1,69 @@
+	<div class="my-container">
+	<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px',fullScreenBackdrop:true }"></ngx-loading>
+</div>
+<div class="row justify-content-center margin-bottom-10">
+	<div class="col-12 col-md-11">
+		<div class="page-header text-center">
+			<h2 class="font-patua margin-top-20 margin-bottom-20"><img src="./assets/icons/calendar-with-a-clock-time-tools.png" class="margin-right-10">These Properties will expire in next 7 days</h2>
+		</div>
+		<div class="row" *ngIf="expiringProperties.length>0">
+			<div class="card col-md-12 col-12">
+				<!-- <div class="row"> -->
+
+					<div class="table-responsive">
+						<table class="table table-bordered table-hover">				
+							<thead>
+								<tr class="tb-header font-18 text-bold">
+									<th>#</th>
+									<th>Unique ID</th>
+									<th>Type</th>
+									<th>City</th>
+									<th>Country</th>
+									<th>Prize</th>
+									<th>Operations</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="text-center" *ngFor="let property of expiringProperties; let i=index ">
+									<td>{{i+1}}</td>
+									<td>{{property.uniqueId}}</td>
+									<td>{{property.propertyType.name}}</td>
+									<td>{{property.city.name}}</td>
+									<td>{{property.country.name}}</td>
+									<td>&euro; {{property.price}}</td>
+									<td>
+										<a routerLink="/propertyDetails/{{property._id}}"><i class="fa fa-eye" style="color: green; cursor: pointer;" title="View Details"></i></a>
+										<a (click)="sendRequest(property._id)"><img src="./assets/icons/reply-all.png" title="Send request to extend validity" class="margin-bottom-5" style="cursor: pointer;"></a>
+										<a (click)="deleteProperty(property._id)"><i class="fas fa-trash-alt" style="color:red; cursor: pointer;" title="Delete Property"></i></a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				<!-- </div> -->
+
+				<div class="row justify-content-center" style="z-index: 0;">
+					<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+						<li [ngClass]="{disabled:pager.currentPage === 1}" class="list-item">
+							<a class="page-link" (click)="setPage(1)">First</a>
+						</li>
+						<li [ngClass]="{disabled:pager.currentPage === 1}" class="list-item">
+							<a class="page-link" (click)="setPage(pager.currentPage - 1)">Previous</a>
+						</li>
+						<li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="list-item">
+							<a class="page-link" (click)="setPage(page)">{{page}}</a>
+						</li>
+						<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="list-item">
+							<a class="page-link" (click)="setPage(pager.currentPage + 1)">Next</a>
+						</li>
+						<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="list-item">
+							<a class="page-link" (click)="setPage(pager.totalPages)">Last</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div *ngIf="expiringProperties.length<=0">
+				<h1 class="text-center">No Properties</h1>
+			</div>
+		</div>
+	</div>

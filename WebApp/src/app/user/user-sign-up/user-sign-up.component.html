@@ -1,0 +1,102 @@
+<div style="background-image: url('assets/images/936523-balloons-clouds-houses-pixar-skyscapes-up-movie.jpg'); background-attachment: fixed; background-size: cover; background-position: center center">
+	<div class="my-container">
+		<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
+	</div>
+	<div class="container" >
+		<div class="row justify-content-center">
+			<div class="col-12 col-md-8">
+				<div class="card" style="background-color: rgba(255,255,255,0.95)">
+					<h3 class="font-playfair text-center " style="font-weight:bold; text-transform: uppercase; letter-spacing: 2px;">sign up - agent</h3>
+					<br />
+					<br />
+					<form class="form-forizontal needs-validation" [formGroup]="signupForm" (ngSubmit)="userSingUp(signupForm.value)">
+						<fieldset>
+							<legend class="font-raleway text-left">
+								Personal Information
+							</legend>	
+							<div class="form-group">
+								<input type="text" id="fname" class="form-control" formControlName="firstName" placeholder="First Name">
+							</div>
+							<div class="form-group">
+								<input type="text" id="lname" class="form-control" formControlName="lastName" placeholder="Last Name">
+							</div>
+							<div class="form-group">
+								<input type="email" id="email" class="form-control" formControlName="email" placeholder="Email-ID">
+							</div>
+							<div class="form-group">
+								<input type="password" id="password" class="form-control" formControlName="password" placeholder="Password">
+							</div>
+							<div class="form-group">
+								<input type="password" id="cpassword" class="form-control" formControlName="cpassword" placeholder="Confirm Password" (blur)="checkConfirmPassword(signUp)">
+							</div>
+						</fieldset>
+
+
+						<fieldset>
+							<legend class="font-raleway text-left"> Contact Information </legend>
+
+
+							<div class="form-group">
+								<input type="text" id="phone" class="form-control" formControlName="phone" placeholder="Phone Number">
+							</div>
+							<div class="form-group">
+								<input type="text" id="mobile" class="form-control" formControlName="mobile" placeholder="Mobile Number">
+							</div>
+							<div class="form-group">
+								<textarea id="address" class="form-control" rows="4" formControlName="address" placeholder="Address"></textarea>
+							</div>
+							<div class="form-group" ng2-auto-complete [source]="Countries" (valueChanged)="valueChangedOfCountry($event)">
+								<input type="text" id="country" class="form-control" formControlName="country" placeholder="Country" autocomplete="off">
+							</div>
+							<div class="form-group">
+								<div ng2-auto-complete [source]="City" (valueChanged)="valueChangedOfCity($event)">
+									<input type="text" id="city" class="form-control font-Palatino" formControlName="city" [(ngModel)]="city" placeholder="City" autocomplete="off"> 
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group">
+									<label class="ml-3 text-LightGray">Is your city missing?</label>
+								</div>
+								<div class="form-group col-3 col-md-3">
+									<button class="btn btn-info font-Palatino" type="button" style="width: 100%;" (click)="addCity()" [disabled]="!selectedCountry.country">Add City</button>
+								</div>
+							</div>
+							<div [hidden]="flag==false">
+								<form class="justify-content-center">
+									<div class="form-group">
+										<input type="text" class="form-control font-Palatino" id="newCity" [(ngModel)]="newCity" name="newCity" placeholder="New City" required>
+									</div>
+									<!-- <div class="form-group">
+										<input type="text" class="form-control font-Palatino" id="newState" [(ngModel)]="newState" name="newState" placeholder="Enter new State" required>
+									</div> -->
+									<div class="form-group">
+										<button class="btn btn-success font-Palatino" type="button" (click)="saveTheCity()" [disabled]="!newCity">Save</button>
+										<button class="btn btn-danger font-Palatino" type="button" (click)="cancle()">Cancel</button>
+									</div>
+								</form>
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" formControlName="state" placeholder="State" required>
+							</div>
+							<div class="form-group">
+								<input type="text" id="postalCode" class="form-control" formControlName="postalCode" placeholder="Postal Code">
+							</div>
+							<div class="form-group">
+								<input type="text" id="company" class="form-control" formControlName="company" placeholder="Company">
+							</div>
+
+							<div class="form-group">
+								<re-captcha formControlName="captchacode" (captchaResponse)="handleCorrectCaptcha($event)" site_key="6LdNmlAUAAAAAD1cxc82kZxF21jhLd5ZNqzdZDX8"></re-captcha>
+							</div>
+							<div class="text-center">
+								<button type="submit" class="btn btn-success btn-signin btn-block" [disabled]="!signupForm.valid"><i class="fas fa-user-plus margin-right-10"></i> SignUp
+								</button>
+							</div>
+						</fieldset>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,81 @@
+<div style="background-image: url('http://hdwallpapersbuzz.com/wp-content/uploads/2017/03/minimal-wallpaper-images-20-1.jpg'); background-attachment: fixed; background-position: top right; background-size: cover">
+    <div class="row " >
+        <!-- Margin -->
+        <div class="col-12">
+            <br /><br />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 mb-2">
+            <div class="container-fluid">
+
+                <div class="card p-5 padding_top" style="background-color: white">
+                    <h2 class="font-playfair text-semantic-black">Get in Touch <i class="fas fa-leaf w3-text-green"></i>
+
+                    </h2>
+                    <div class="card-body">
+                        <form class="formp-5orm-group mb-3">
+                            <div class="form-group mb-3">
+                                <input type="text" [(ngModel)]="contactForm.name" class="form-control" name="name" required="" placeholder="Name">
+                            </div>
+                            <div class="row no-padding">
+                                <div class="form-group col-12 col-md-6 mb-3 mr-auto" >
+                                    <input type="email" [(ngModel)]="contactForm.email" class="form-control" name="email" required placeholder="example@xyz.com">
+                                </div>
+                                <div class="form-group col-12 col-md-6 mb-3 ml-auto">
+                                    <input type="tel" [(ngModel)]="contactForm.phone" class="form-control" name="phone" placeholder="Phone">
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <textarea type="text" [(ngModel)]="contactForm.message" class="form-control" name="message" rows="10" placeholder="What can we help you with?"></textarea>
+                            </div>
+                            <div class="form-group mb-3" style="transform:scale(0.77);-webkit-transform:scale(0.77);transform-origin:0 0;-webkit-transform-origin:0 0;">
+                                <re-captcha name="captcha" (captchaResponse)="handleCorrectCaptcha($event)" site_key="6LdNmlAUAAAAAD1cxc82kZxF21jhLd5ZNqzdZDX8"></re-captcha>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-grad width-100" [disabled]="!contactForm.name || !contactForm.email || !contactForm.phone || !contactForm.message || !contactForm.captchacode" (click)="onSubmit()"><i class="fas fa-envelope"></i> Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 mb-2" style="">
+            <div class="col-md-12">
+                <div class="hover-opacity">
+                    <agm-map  [latitude]=39.9334 [longitude]=32.8597	[zoom]=8 [disableDefaultUI]=false [zoomControl]=true [mapTypeControl]=true [usePanning]=true>
+                        <agm-marker [latitude]=39.9334 [longitude]=32.8597 >
+                            <agm-info-window>
+                                <strong>Lorem Ipsum</strong>
+                            </agm-info-window>
+                        </agm-marker>
+                    </agm-map>
+                </div>
+                <div class="col-12 col-md-12 margin-top-20">
+                    <div class="row">
+                        <div class="card hover-opacity col-sm-4 col-md-4 col-xs-12 text-dark-grey text-bold ">
+                            <h3 class="font-raleway text-center resp_title_contact"><i class="fas fa-map-marker-alt "></i> Address</h3>
+                            <div class="ml-5 text-center w3-text-black contact_responsive">
+                                13/25 Shibuia,
+                                <br>Ankara,
+                                <br>45Y 73J,
+                                <br>Turkey.
+                            </div>
+                        </div>
+                        <div class="card hover-opacity col-sm-4 col-md-4 col-xs-12 text-dark-grey text-bold ">
+                            <h3 class="font-raleway text-center resp_title_contact"><i class="fas fa-phone fa-flip-horizontal "></i> Call us on</h3>
+                            <a href="tel: +32 489 088 585" class="ml-5 text-center contact_responsive">+32 489 088 585</a>
+                            <br />
+                        </div>
+                        <div class="card hover-opacity col-sm-4 col-md-4 col-xs-12 text-dark-grey text-bold ">
+                            <h3 class="font-raleway text-center resp_title_contact"><i class="fas fa-envelope "></i> E-Mail us on</h3>
+                            <a href="mailto:info@samsarcom.be" class="ml-5 text-center contact_responsive">info@samsarcom.be</a>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>

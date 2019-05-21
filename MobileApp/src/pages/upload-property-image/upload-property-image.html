@@ -1,0 +1,61 @@
+<ion-header>
+	<ion-navbar color="myColor">
+		<ion-title no-padding no-margin>Choose Location &amp; Upload Images</ion-title>
+	</ion-navbar>
+
+	<ion-toolbar no-border-top>
+		<div class="row" padding justify-content-around>
+			<a id="location" (click)="toggleView('location')">
+				<ion-icon name="pin"></ion-icon>
+			</a>
+			<a id="image" (click)="toggleView('image')"> <ion-icon name="images"></ion-icon> </a>
+			<a id="uploadImages" (click)="updataProperty()"> <ion-icon name="home"></ion-icon></a>
+		</div>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+	
+	<!-- <div [ngSwitch]="option"> -->
+		<div [hidden]="option!='location'">
+			<h2 class="title-responsive">Choose Location</h2>
+			<div class="form-group" margin-bottom>
+				<input id="search" #search placeholder="Search for location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control location-search" [formControl]="searchControl" >
+			</div>
+			<agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+				<agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]=true (dragEnd)="markerDragEnd($event)"></agm-marker>
+			</agm-map>
+			<ion-row justify-content-center margin-top>
+				<button ion-button type="submit" style="background-color: #0b7997;color: white;
+    font-weight: 700;
+    font-size: 15px; border-radius: 0px; width: 100%;" (click)="submitLocation()">Save</button>
+			</ion-row>
+		</div>
+		<div [hidden]="option!='image'">
+			<ion-item no-padding style="height: 50px;">
+				<label ion-button full color="myGray" style="height: 50px;" no-margin><ion-icon name="md-attach" margin-right></ion-icon> Choose Property Images
+					<input type="file" #fileupload1 class="form-control hidden" (change)="fileChange1(fileupload1.files)" multiple/>
+				</label>
+			</ion-item>
+
+			<ion-row justify-content-center margin-vertical>
+				<button ion-button type="submit" (click)="onSubmit()" style="background-color: #0b7997;color: white;
+    font-weight: 700;
+    font-size: 15px; border-radius: 0px; width: 100%;">Upload Proprty Images</button>
+			</ion-row>
+
+			<div *ngIf="property">
+				<ion-card margin-vertical *ngIf="property.images">
+					<h2 text-center margin-vertical>Uploaded Images</h2>
+					<ion-row justify-content-center *ngIf="property">
+					<h2 *ngIf = 'images.length == 0'>Property Images Not Uploaded !</h2>
+						<ion-col col-4 margin *ngFor="let image of images; let i=index ">
+							<img class="card-img-top" [src]="image_url + image" onerror="this.src='./assets/imgs/noImage.png'" alt="imagesUrl" width="100%">
+							<button ion-button block color="danger" (click)="deleteImage(i)" style="bottom: 0;position: relative;"><i class="fa fa-trash-alt"></i></button>
+						</ion-col>
+					</ion-row>
+				</ion-card>
+			</div>
+		</div>
+	<!-- </div> -->
+</ion-content>

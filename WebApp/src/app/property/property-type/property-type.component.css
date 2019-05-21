@@ -1,0 +1,36 @@
+.header {
+    padding-bottom: 9px;
+    margin: 40px 0 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.shadow{
+    /*box-shadow: 0.5px 0.5px 5px gray;*/
+}
+.card{
+    border-radius: 0px !important;
+    cursor: pointer;
+    /*border: 1.5px solid darkgrey !important; */
+    transition: all 0.2s ease-in !important;
+}
+.card:hover{
+    border-radius: 0px !important;
+    cursor: pointer;
+    box-shadow: 1.5mm 1.5mm 15px rgba(0,0,0,0.3); 
+}
+.bg-com{
+    background: #6bc51d;
+    cursor: pointer;
+    transition: all 0.2s ease-in !important;
+}
+
+.bg-com:hover{
+    background: #6bc51d;
+    cursor: pointer;
+    border: 1.5px solid #00718e;
+    transition: all 0.2s ease-out !important;
+
+}
+.btn-samsar:hover{
+    color: #ffffff !important;
+}

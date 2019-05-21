@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar color="myColor">
+    <button ion-button menuToggle end>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Expiring Properties</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content class="responsive_set_mob">
+	<ion-list *ngIf="expiringProperties.length>0">
+		<ion-item-sliding *ngFor="let property of expiringProperties; let i=index; ">
+			<ion-item (tap)="propertyDetails(property)">
+				<ion-avatar item-start>
+					<div *ngIf="property.images.length<=0">
+						<img src="./assets/imgs/noImage.png" alt="imagesUrl" class="img-fluid fix-heigth">
+					</div>
+					<div *ngIf="property.images.length>0">
+						<img class="img-fluid fix-heigth" [src]="image_url + property.images[0]" onerror="this.src='./assets/imgs/noImage.png'" alt="imagesUrl">
+					</div>
+				</ion-avatar>
+				<h2>{{property.uniqueId}}</h2>
+				<h3 *ngIf="property.propertyType">{{property.propertyType.name}}</h3>
+				<p>{{property.city.name}},{{property.country.name}}</p>
+				<p>Expiring on: {{property.expireAt}}</p>
+				<p>Please Swipe left to send renew request</p>
+			</ion-item>
+			<ion-item-options side="right">
+				<button ion-button color="secondary" (click)="sendRequest(property._id)">
+					<ion-icon name="redo"></ion-icon>
+					Send
+				</button>				
+			
+				<button ion-button color="danger" (click)="deleteProperty(property._id)">
+					<ion-icon name="trash"></ion-icon>
+					Delete
+				</button>				
+			</ion-item-options>
+		</ion-item-sliding>
+	</ion-list>
+	<div *ngIf="expiringProperties.length<=0" class="height-full">
+		<h1 text-center>No Properties</h1>
+	</div>
+	<ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="finishInfiniteScroll==true">
+		<ion-infinite-scroll-content loadingSpinner="bubbles"
+		loadingText="Loading more data..."></ion-infinite-scroll-content>
+	</ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,146 @@
+<ion-header>
+	<ion-navbar color="myColor">
+		<label float-left color="myColor" class="btn" margin-vertical (click)="goBack()" style="margin-left: 5px;"><i class="fa fa-chevron-left"></i>&nbsp;</label>
+		<ion-title text-center margin-vertical>Search Results</ion-title>
+		<button ion-button menuToggle end>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+	</ion-navbar>
+	<ion-toolbar no-border-top>
+		<div class="row fixed" padding justify-content-around>
+			<div class="custom" (click)="openFilter()">
+				<i class="fas fa-filter" margin-right></i><span>Filter</span>
+			</div>
+			<div class="custom" [hidden]="view == 'map'" (click)="toggleView('map')">
+				<i class="fas fa-map-marker-alt" margin-right></i><span>Map</span>
+			</div>
+			<div class="custom" [hidden]="view == 'list'" (click)="toggleView('list')">
+				<i class="fas fa-list-alt" margin-right></i><span>List</span>
+			</div>
+		</div>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+	
+	<div no-margin id="list"  class="hight-auto" *ngIf="allProperty.length>0" [hidden]="view == 'map'">
+		<ion-card *ngFor ="let property of properties">
+			<ion-card-content class="design" *ngIf="property">
+				<div *ngIf="property.images.length<=0" (click)="propertyDetails(property)">
+					<img src="./assets/imgs/noImage.png" alt="imagesUrl" class="img-fluid fix-heigth">
+				</div>
+				<div *ngIf="property.images.length>0" (click)="propertyDetails(property)">
+					<img class="img-fluid fix-heigth" [src]="image_url + property.images[0]" onerror="this.src='./assets/imgs/noImage.png'" alt="imagesUrl">
+				</div>
+
+				<div class="property text"  (click)="propertyDetails(property)">
+					<p class="text" *ngIf= "property.uniqueId"><strong><span class="margin-left-5">{{property.uniqueId}}</span></strong>
+					</p>
+				</div>
+
+				<div class="property"  (click)="propertyDetails(property)">
+					<ion-row>
+						<ion-col col-4 col-sm-2>
+							<strong>Price :</strong>
+						</ion-col>
+						<ion-col col-8 col-sm-10>
+							&euro; {{property.price}}
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col col-4 col-sm-2>
+							<strong>Area Size :</strong>
+						</ion-col>
+						<ion-col col-8 col-sm-10>
+							{{property.area}} - Rooms: {{property.rooms}}
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col col-4>
+							<strong>Property Type:</strong>
+						</ion-col>
+						<ion-col col-8>
+							{{property.propertyType.name}}
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col col-4 col-sm-2>
+							<strong>Address :</strong>
+						</ion-col>
+						<ion-col col-8 col-sm-10>
+							{{property.propertyAddress}}
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col col-4 col-sm-2>
+							<strong>Postal Code :</strong>
+						</ion-col>
+						<ion-col col-8 col-sm-10>
+							{{property.postalCode}}
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col col-4 col-sm-2>
+							<strong>City :</strong>
+						</ion-col>
+						<ion-col col-8 col-sm-10>
+							{{property.city.name}}
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col col-4 col-sm-2>
+							<strong>Country :</strong>
+						</ion-col>
+						<ion-col col-8 col-sm-10>
+							{{property.country.name}}
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col col-4 col-sm-2>
+							<strong>Status :</strong>
+						</ion-col>
+						<ion-col col-8 col-sm-10>
+							{{property.status}}
+							<!-- <span *ngIf="property.status == 'Available'">Available</span><span *ngIf="property.status == 'Unavailable'">Unavailable</span> -->
+						</ion-col>
+					</ion-row>
+				</div>
+				<ion-row justify-content-between>
+					<a class="width-half" ion-button color="myColor" float-left href="tel:+32 489088585"><i class="fas fa-phone fa-flip-horizontal" margin-right></i>Call</a>
+					<a class="width-half" ion-button color="myColor" float-right href="mailto:info@samsarcom.be" target="_top"><i class="far fa-envelope" margin-right></i>Email</a>
+				</ion-row>
+				<!-- </div> -->
+			</ion-card-content>
+			<!-- <div class="footer"> -->
+			</ion-card>
+		<ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="finishInfiniteScroll==true">
+			<ion-infinite-scroll-content loadingSpinner="bubbles"
+			loadingText="Loading more data..."></ion-infinite-scroll-content>
+		</ion-infinite-scroll>
+		</div>
+		<div text-center class="height-full" *ngIf="!allProperty.length>0">
+			<ion-label>
+				<h2>No Match Found!!!</h2>
+			</ion-label>
+		</div>
+		<div *ngIf="allProperty.length>0" [hidden]="view == 'list'">
+			<agm-map [latitude]=location.lat [longitude]=location.lon [zoom]=5 [zoomControl]=true [mapTypeControl]=true>
+				<agm-marker *ngFor="let property of AllProperty; let i=index " [latitude]="ConvertToNumber(property.lat)" [longitude]="ConvertToNumber(property.lon)" [markerDraggable]=false>
+					<agm-info-window>
+						<div text-center margin-top style="height: 200px; width: 200px; cursor: pointer;" (click)="propertyDetails(property)">
+							<div margin-top *ngIf="property.images.length<=0">
+								<img src="./assets/imgs/noImage.png" height="100" width="200" alt="imagesUrl" class="img-fluid">
+							</div>
+							<div margin-top *ngIf="property.images.length>0">
+								<img class="img-fluid" height="100" width="200" [src]="image_url + property.images[0]" onerror="this.src='./assets/imgs/noImage.png'" alt="imagesUrl">
+							</div>
+							<p style="font-size: 14px;" text-center><strong>ID: {{property.uniqueId}}</strong></p>
+							<p style="font-size: 14px;" text-center>Address: {{property.propertyAddress}}</p>
+							<p style="font-size: 14px;" text-center>Price: &euro; {{property.price}}</p>
+						</div>
+					</agm-info-window>
+				</agm-marker>
+			</agm-map>
+		</div>
+	</ion-content>

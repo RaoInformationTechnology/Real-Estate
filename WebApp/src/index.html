@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Samsarcom</title>
+        <base href="/">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Lobster" rel="stylesheet"> -->
+        <link href="https://fonts.googleapis.com/css?family=Concert+One|Patua+One" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+        <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800' rel='stylesheet' type='text/css'> -->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:400,900|Great+Vibes|Lobster|Open+Sans|Oswald|Concert+One|Patua+One" rel="stylesheet">
+
+        <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans|Oswald|Raleway" rel="stylesheet"> -->
+        <link rel="stylesheet" type="text/css" href="assets/css/w3.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:400,900" rel="stylesheet">
+        <link rel='stylesheet' type='text/css' href='assets/bower_components/font-raoit/css/fonts.css' />
+        <link rel="stylesheet" type="text/css" href="assets/bower_components/spacing-raoit/css/spacing-raoit.css" />
+        <link rel="stylesheet" type="text/css" href="assets/bower_components/color-raoit/css/colors.css" />
+        <link rel="stylesheet" href="assets/bower_components/font-awesome-animation/dist/font-awesome-animation.min.css">
+        <link rel="stylesheet" type="text/css" href="assets/slider/demo.css" />
+        <link rel="stylesheet" type="text/css" href="assets/slider/style1.css" />
+        <script type="text/javascript" src="assets/slider/modernizr.custom.86080.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
+        <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+        <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+  
+        <link rel="stylesheet" href="assets/css/lodearr.css">
+        <style type="text/css">
+            #demo-content {
+                padding-top: 0;
+                position: fixed;
+                top: 0px;
+                z-index: 10000;
+                left: 0;
+                right:0;
+            }
+        </style>
+    </head>
+    <body style="background-color: #eeeeee;">
+
+        <div id="demo-content">
+            <div id="loader-wrapper">
+                <div id="loader"></div>
+                <div class="loader-section section-left"></div>
+                <div class="loader-section section-right"></div>
+            </div>
+        </div>
+
+        <script src="assets/js/jquery.js"></script>
+        <script defer src="assets/bower_components/font-awesome/svg-with-js/js/fontawesome-all.js"></script>
+        <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <!-- <script async defer src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDtOVq626-G4gYX2jlV4TlVJstIhWnpVbo"></script> -->
+        <!-- 	<div id="cover">
+                        <h1 class="text-center font-CenturyG text-bold text-White" style="margin-top:-350px;">Samsarcom is loading... Please wait.</h1>
+                </div> 
+        -->	<app-root id="approot" style='display:block;  '></app-root>	
+
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script type="text/javascript">
+        AOS.init();
+        $(document).ready(function () {
+            console.log("Loading scrollreveal");
+            window.sr = ScrollReveal();
+            sr.reveal('.doScrollReveal');
+            console.log("scroll reveal activated")
+
+        })
+        $(window).on('load', function () {
+
+            $('#cover').hide();
+            $('#approot').show();
+        })
+    </script>
+
+    <script src="assets/js/lodear.js"></script>
+
+</body>
+</html>
+<style type="text/css">
+
+
+    #cover{
+        background-image: url('assets/images/loading.gif');
+        display: flex; justify-content: center; align-items: center; width: 100%; height: 100vh;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 500px auto;
+        background-color: #4492f4;
+    }
+</style>

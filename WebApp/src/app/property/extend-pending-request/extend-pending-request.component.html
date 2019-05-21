@@ -1,0 +1,80 @@
+<div class="my-container">
+	<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px',fullScreenBackdrop:true }"></ngx-loading>
+</div>
+<div class="row justify-content-center margin-bottom-10">
+	<div class="col-12 col-md-11">
+		<div class="page-header text-center">
+			<h2 class="font-patua margin-top-20 margin-bottom-20"><img src="./assets/icons/calendar-with-a-clock-time-tools.png" class="margin-right-10">Pending requests for extending validity</h2>
+		</div>
+		<div class="row" *ngIf="expiringProperties.length<=0">
+			<h2 class="text-center">No More Properties to Expire</h2>
+		</div>
+		<div class="row" *ngIf="expiringProperties">
+			<div class="card col-md-12 col-12">
+				<!-- <div class="row"> -->
+					<div class="table-responsive">
+						<table class="table table-bordered table-hover" style="text-align: left;">							
+							<thead>
+								<tr class="tb-header font-18 text-bold">
+									<th>#</th>
+									<th>Agent / User</th>
+									<th>Unique ID</th>
+									<th>Phone</th>
+									<th>Company</th>
+									<th>Type</th>
+									<th>City</th>
+									<th>Country</th>
+									<th>Prize</th>
+									<th>Operations</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="text-center cursor-pointer" *ngFor="let property of  pagedItems; let i=index ">
+									<td>{{i+1}}</td>
+									<td>{{property.agent.firstName}} {{property.agent.lastName}}</td>
+									<td>{{property.uniqueId}}</td>
+									<!-- <td>{{property.agent.email}}</td> -->
+									<td>{{property.agent.mobile}}</td>
+									<td>{{property.agent.company}}</td>
+									<td>{{property.propertyType.name}}</td>
+									<td>{{property.city.name}}</td>
+									<td>{{property.country.name}}</td>
+									<td>&euro; {{property.price}}</td>
+									<td class="text-center">
+										<a routerLink="/propertyDetails/{{property._id}}"><i class="fa fa-eye" style="color: green; cursor: pointer;" title="View Details"></i></a>
+										<a (click)="sendRequest(property)"><img src="./assets/icons/verification.png" class="margin-bottom-5" style="cursor: pointer;" title="Approve"></a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				<!-- </div> -->
+				<div class="row justify-content-center scroll-x" style="z-index: 0;">
+					
+					<ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+						<li [ngClass]="{disabled:pager.currentPage === 1}" class="list-item">
+							<a class="page-link " (click)="setPage(1)">First</a>
+						</li>
+						<li [ngClass]="{disabled:pager.currentPage === 1}" class="list-item">
+							<a class="page-link" (click)="setPage(pager.currentPage - 1)">Previous</a>
+						</li>
+						<li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="list-item">
+							<a class="page-link" (click)="setPage(page)">{{page}}</a>
+						</li>
+						<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="list-item">
+							<a class="page-link" (click)="setPage(pager.currentPage + 1)">Next</a>
+						</li>
+						<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="list-item">
+							<a class="page-link" (click)="setPage(pager.totalPages)">Last</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+		<div *ngIf="expiringProperties.length<=0">
+			<h1 class="text-center">No Request Pending</h1>
+		</div>
+	</div>
+</div>

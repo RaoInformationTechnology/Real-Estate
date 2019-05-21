@@ -1,0 +1,33 @@
+<ion-header>
+	<ion-navbar color="myColor">
+		<ion-title>Authentication</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content class="background" padding>
+	<ion-row justify-content-center>
+		<div col-12>
+			<div text-center margin-vertical>
+				<h2 class="font-concret"><i class="far fa-envelope-open margin-right-20"></i>Check your email!</h2>
+			</div>
+			<p text-center *ngIf="user">We’ve sent a verification code to <strong>{{user.email}}</strong> Enter it below to confirm your email address.</p>
+			<br><br><br>
+			<label text-center>
+				<span text-center class="font-20">Your verification code!!!</span>
+			</label>
+			<form class="form-horizontal">
+				<ion-list>
+					<ion-item>
+						<ion-input class="form-control" type="text" [(ngModel)]="randomCode" name="verificationCode" placeholder="Enter your code.."></ion-input>
+					</ion-item>
+				</ion-list>
+				<div class="form-group">
+					<button ion-button color="twitter" (click)="verify()">Verify</button>
+				</div>
+			</form>
+			<h6 id="code" text-right color="danger"><sup>*</sup> Your code will expire in 5 minitues. </h6>
+			<a float-right id="newCode" (click)="getNewCode()"></a>
+		</div>
+	</ion-row>
+</ion-content>

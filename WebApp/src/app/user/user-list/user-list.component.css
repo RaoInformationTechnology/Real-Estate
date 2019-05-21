@@ -1,0 +1,78 @@
+.cursor-pointer{
+    cursor: pointer;
+}
+
+input[type=text] {
+
+    width: 85%;
+    -webkit-transition: width 0.6s ease-in-out;
+    transition: width 0.6s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 100%;
+}
+
+ng2-auto-complete{
+    width: 100% !important;
+}
+
+a{
+    text-decoration: none;
+}
+.citystatecountry{
+    font-size:14px !important;
+}
+
+@media (max-width: 768px) {
+    .citystatecountry{
+        font-size:9px !important;
+    }
+    .float-right {
+        float: left!important;
+    }
+    .col-sm-6 {
+        -ms-flex: 0 0 50% !important;
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .col-xs-12 {
+        width: 100% !important;
+    }
+    .float-right{
+        float: right!important;
+    }
+}
+
+@media (max-width: 320px) {
+    .col-xs-12 {
+        width: 100% !important;
+    }
+    .float-right{
+        float: left!important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .citystatecountry{
+        font-size:12px !important;
+    }
+    .float-right {
+        float: left!important;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .col-xs-12 {
+        width: 100% !important;
+        -ms-flex: 0 0 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+}

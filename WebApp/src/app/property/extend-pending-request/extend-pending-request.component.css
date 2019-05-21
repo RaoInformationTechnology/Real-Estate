@@ -1,0 +1,44 @@
+.card{
+ /* border-radius: 0px !important;
+  cursor: pointer;
+  border: 1.5px solid darkgrey !important; 
+  transition: all 0.2s ease-in !important;*/
+  width: 100%;
+}
+/*.card:hover{
+  border-radius: 0px !important;
+  cursor: pointer;
+  box-shadow: 1.5mm 1.5mm 15px rgba(0,0,0,0.3); 
+}*/
+
+.tb-header{
+	color: white !important;
+	background-color: #00718e;
+  text-align: center;
+}
+#list-item{
+  padding: 2px;
+  margin-top: 20px;
+  margin-right: 5px;
+  border: 1px solid rgb(0,116,140);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (min-width: 1281px) {
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+@media (min-width: 481px) and (max-width: 767px) {  
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .pagination > li > a{
+        padding: 6px !important;
+    }
+}

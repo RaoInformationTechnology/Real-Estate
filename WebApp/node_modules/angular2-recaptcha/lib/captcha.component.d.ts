@@ -1,0 +1,30 @@
+import { OnInit, EventEmitter, NgZone, ElementRef } from '@angular/core';
+import { ControlValueAccessor } from '@angular/forms';
+import { ReCaptchaService } from './captcha.service';
+export declare class ReCaptchaComponent implements OnInit, ControlValueAccessor {
+    private _zone;
+    private _captchaService;
+    site_key: string;
+    theme: string;
+    type: string;
+    size: string;
+    tabindex: number;
+    badge: string;
+    language: string;
+    captchaResponse: EventEmitter<string>;
+    captchaExpired: EventEmitter<{}>;
+    targetRef: ElementRef;
+    widgetId: any;
+    onChange: Function;
+    onTouched: Function;
+    constructor(_zone: NgZone, _captchaService: ReCaptchaService);
+    ngOnInit(): void;
+    reset(): void;
+    execute(): void;
+    getResponse(): String;
+    writeValue(newValue: any): void;
+    registerOnChange(fn: any): void;
+    registerOnTouched(fn: any): void;
+    private recaptchaCallback(response);
+    private recaptchaExpiredCallback();
+}

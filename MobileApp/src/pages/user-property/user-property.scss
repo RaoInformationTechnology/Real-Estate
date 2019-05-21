@@ -1,0 +1,93 @@
+page-user-property {
+	.fa-check{
+		color: green;
+	}
+	.fix-heigth{
+		height: 175px !important;
+		width: auto;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.fa-ban{
+		color: red;
+	}
+	.width-half{
+		width: 48% !important;
+	}
+
+	.height-full{
+		margin-top: 60% !important;
+	}
+
+	a {
+		cursor: pointer;
+	}
+	a {
+		text-decoration: none;
+		color: white !important;
+	}
+	.fa-phone{
+		color: white !important;
+	}
+
+	.fa-envelope{
+		color: white !important;
+	}
+
+	.custom{
+		cursor: pointer !important;
+		color: rgb(112,112,112) !important;
+	}
+
+	.footer{
+		cursor: pointer !important;
+		margin: 10px 5px 10px 5px !important;
+	}
+
+	.card{
+		border: 1px solid lightgray;
+	}
+
+	.design{
+		padding: 3px 3px 3px 3px;
+	}
+
+	.text{
+		color: #4169E1;
+		font-weight: 700 !important;
+ 		font-size: 15px !important;
+	}
+
+	.profile-text{
+		font-weight: 700 !important;
+ 		font-size: 16px !important;
+	}
+
+	.property{
+		margin: 10px 2px 15px 2px;
+		padding: 5px 10px 5px 10px;
+		border: 1px solid lightgray;
+		border-radius: 5px;
+	}
+
+	.text-white{
+		color: white !important;
+		font-weight: 300 !important;
+ 		font-size: 16px !important;
+	}
+
+	.btn{
+		cursor: pointer !important;
+		color: white !important;
+ 		font-size: 20px !important;
+	}
+
+	.no-background{
+		background-color: white !important;
+	}
+
+	.margin-top-20{
+		margin-top: 20px;
+	}
+}

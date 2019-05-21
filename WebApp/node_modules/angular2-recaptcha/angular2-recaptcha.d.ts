@@ -1,0 +1,3 @@
+export declare class ReCaptchaModule {
+}
+export * from './lib/captcha.component';

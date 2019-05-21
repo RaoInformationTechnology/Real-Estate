@@ -1,0 +1,72 @@
+
+<ion-content class="background" padding>
+  <div class="row" justify-content-center style=" max-height: 100%;">
+    <div col-12 col-sm-8 col-md-8>
+      <div class="row">
+        <img class="img-fluid  image" src="./assets/imgs/samsarLogo.png" alt="Login Image" style="padding: 0px;">
+      </div>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 style="padding-left: 0px; ">
+            <button ion-button full id="buy" class="samsar-btn-active box-shadow-0" text-center (click)="setOption('Buy')">Buy</button>
+          </ion-col>
+          <ion-col col-6 style="padding-right: 0px; ">
+            <button ion-button full id="rent" class="samsar-btn box-shadow-0" text-center (click)="setOption('Rent')">Rent</button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+
+
+      <ion-list class="resposive_all_input_bg">
+        <ion-grid>
+          <ion-row>
+            <ion-item col-12 col-sm-12 margin-top class="border margin">
+              <ion-label [hidden]="Type">Select Property Type</ion-label>
+              <ion-select [(ngModel)]="Type" (ionChange)="changeType(Type)">
+                <ion-option *ngFor="let type of propertyType" value={{type._id}}>{{type.name}}</ion-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item col-12 col-sm-12 class="border margin-top">
+              <ion-label [hidden]="countryId">Select Country</ion-label>
+              <ion-select [(ngModel)]="countryId" (ionChange)="changeCountry(countryId)">
+                <ion-option *ngFor="let country of countries" value={{country._id}}>{{country.name}}</ion-option>
+              </ion-select>
+            </ion-item>
+
+
+            <ion-item col-12 col-sm-12 class="border margin-top">
+              <ion-label [hidden]="city">Select a City / an Area</ion-label>
+              <ion-select [(ngModel)]="city" (ionChange)="changeCity(city)">
+                <ion-option *ngFor="let city of cities" value={{city._id}}>{{city.name}}</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid>
+          <ion-row *ngIf="userType!=='BlockedAgent'">
+            <ion-col col-6 style="padding-left: 0px; ">
+              <button ion-button full text-capitalize class="samsar" (click)="searchProperty()" [ngStyle]="{'background-color': buttonColor}" style="width: 100% !important;">Search</button>
+            </ion-col>
+            <ion-col col-6 *ngIf="userType == 'Agent'" style="padding-right: 0px; ">
+              <button ion-button full text-capitalize class="samsar" (click)="addListing()" [ngStyle]="{'background-color': buttonColor}" style="width: 100% !important;">Add Listing</button>
+            </ion-col>
+            <ion-col col-6 *ngIf="userType == 'Guest'" style="padding-right: 0px; ">
+              <button ion-button full text-capitalize class="samsar" (click)="login()" [ngStyle]="{'background-color': buttonColor}" style="width: 100% !important;">Login</button>  
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
+        <div class="row" *ngIf="userType==='BlockedAgent'">
+          <button ion-button text-capitalize block col-12 col-sm-12 class="samsar" (click)="searchProperty()" [ngStyle]="{'background-color': buttonColor}">Search</button>
+        </div>
+
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

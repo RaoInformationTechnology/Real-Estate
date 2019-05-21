@@ -1,0 +1,125 @@
+<ion-header>
+	<ion-navbar color="myColor">
+			<ion-title margin-vertical>SignUp</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="background" padding>
+	<form class="form-forizontal all_input_responsive" [formGroup]="signupForm">
+		<!-- <ion-slides> -->
+
+			<!-- <ion-slide> -->
+				<!-- <fieldset> -->
+					<legend class="text-bold title-responsive" text-center>
+						Personal Information
+					</legend>
+					<ion-list>
+						<ion-item margin-top>
+							<ion-input type="text" id="fname" class="form-control" formControlName="firstName" placeholder="Enter Your First Name"></ion-input>
+						</ion-item>
+
+						<ion-item margin-top>
+							<ion-input type="text" id="lname" class="form-control" formControlName="lastName" placeholder="Enter Your Last Name"></ion-input>
+						</ion-item>
+
+						<ion-item margin-top>
+							<ion-input type="email" id="email" class="form-control" formControlName="email" placeholder="Enter Your Email-ID"></ion-input>
+						</ion-item>
+
+						<ion-item margin-top>
+							<ion-input type="password" id="password" class="form-control" formControlName="password" placeholder="Enter Your Password"></ion-input>
+						</ion-item>
+
+						<ion-item margin-top>
+							<ion-input type="password" id="cpassword" class="form-control" formControlName="cpassword" placeholder="Confirm Your Password"></ion-input>
+						</ion-item>
+					</ion-list>
+					<!-- <div float-end>
+						<i class="fas fa-angle-double-right fa-3x" style="color: #79d430;"></i>
+					</div> -->
+				<!-- </fieldset> -->
+			<!-- </ion-slide> -->
+
+			<!-- <ion-slide> -->
+				<!-- <fieldset> -->
+					<legend class="text-bold title-responsive" text-center> Contact Information </legend>
+					<ion-list>
+						<ion-item margin-top>
+							<ion-input type="text" id="phone" class="form-control" formControlName="phone" placeholder="Enter Your Phone Number"></ion-input>
+						</ion-item>
+
+						<ion-item margin-top>
+							<ion-input type="text" id="mobile" class="form-control" formControlName="mobile" placeholder="Enter Your Mobile Number"></ion-input>
+						</ion-item>
+
+						<ion-item margin-top>
+							<ion-input type="text" id="address" class="form-control md-textarea" formControlName="address" placeholder="Enter Your Address"></ion-input>
+						</ion-item>
+
+						<ion-item margin-top>
+							<ion-label>Select Country</ion-label>
+							<ion-select [(ngModel)]="country" (ionChange)="changeCountry(country)" formControlName="country">
+								<ion-option *ngFor="let country of countries" value={{country._id}}>{{country.name}}</ion-option>
+							</ion-select><!-- 
+							<ion-input type="text" id="country" class="form-control md-textarea" formControlName="country" placeholder="Enter Your Country"></ion-input> -->
+						</ion-item>
+
+
+							<ion-item class="border" margin-vertical>
+								<ion-label>Select a City / an Area</ion-label>
+								<ion-select [(ngModel)]="city" formControlName="city" (ionChange)="changeCity(city)">
+									<ion-option *ngFor="let city of cities" value={{city._id}}>{{city.name}}</ion-option>
+								</ion-select>
+							</ion-item>
+						<div class="row" padding-left>
+							<div class="form-group" style="line-height: 3;">
+								<label text-capitalize>Is your city missing? &nbsp;</label>
+							</div>
+							<div class="form-group">
+								<button ion-button color="myColor" [disabled]="!countryId" (click)="addCity()">Add City</button>
+							</div>
+						</div>
+						<div [hidden]="flag==false">
+							<form class="justify-content-center">
+								<ion-item no-padding margin-vertical>
+									<ion-input type="text" class="form-control font-Palatino" id="newCity" [(ngModel)]="newCity" name="newCity" placeholder="Enter New City" required></ion-input>
+								</ion-item>
+								<!-- <ion-item no-padding margin-vertical>
+									<ion-input type="text" class="form-control font-Palatino" id="newState" [(ngModel)]="newState" name="newState" placeholder="Enter New State" required></ion-input>
+								</ion-item> -->
+								<div class="form-group">
+									<button ion-button class="font-Palatino" type="button" color="secondary" (click)="saveTheCity()" [disabled]="!newCity">Save</button>
+									<button ion-button class="font-Palatino" type="button" color="danger" (click)="cancle()">Cancle</button>
+								</div>
+							</form>
+						</div>
+
+						<ion-item margin-top>
+							<ion-input type="text" id="state" class="form-control" [(ngModel)]="state" formControlName="state" placeholder="Enter State"></ion-input>
+						</ion-item>
+
+						<ion-item margin-top>
+							<ion-input type="text" id="postalCode" class="form-control" formControlName="postalCode" placeholder="Enter Postal Code"></ion-input>
+						</ion-item>
+
+						<ion-item margin-top>
+							<ion-input type="text" id="company" class="form-control" formControlName="company" placeholder="Enter Your Company"></ion-input>
+						</ion-item>
+
+						<ion-item margin-top>
+							<ion-input type="text" id="admin" class="form-control" formControlName="admin" placeholder="Enter Your Admin"></ion-input>
+						</ion-item>
+
+					</ion-list>
+					<div text-center>
+						<button ion-button type="submit" class="samsar-btn" [disabled]="!signupForm.valid" (click)="userSingUp(signupForm.value)"><i class="fas fa-user-plus" margin-right></i> SignUp
+						</button>
+					</div>
+					<div margin-top text-center>
+						<a (click)="loginPage()">Already Have account?</a>
+					</div>
+				<!-- </fieldset> -->
+			<!-- </ion-slide> -->
+		<!-- </ion-slides> -->
+	</form>
+</ion-content>

@@ -1,0 +1,81 @@
+.fix-heigth{
+    height: 200px !important;
+    max-width: 300px !important;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.card{
+    border-radius: 0px !important;
+    border: 1.5px solid darkgrey !important; 
+    cursor: pointer;
+}
+fieldset
+{
+    border: 1px solid lightgrey; 
+    padding:8px;
+    border-radius: 5px;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 4px;
+    margin-bottom: 4px;  
+}
+
+p{
+    color: #0b7997;
+}
+agm-map {
+    height: 300px;
+}
+
+.btn-white{
+    background: #0b7997;
+    color: white;
+}
+
+.w-100{
+    width: 200px;
+}
+
+@media (min-width: 1281px) {
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .fix-heigth{
+        height: auto !important;
+        max-width: 255px !important;
+    }
+
+}
+
+
+th.first-col > div, 
+td.first-col > div {
+    overflow:hidden;
+    white-space:nowrap;
+    width:100px
+}
+
+table{
+    border:0px;
+    table-layout: fixed;
+    max-width: 600px;
+    width: 100%;
+}
+
+th, td {
+    border: 0px;
+    overflow: hidden;
+    max-width: 300px;
+    width: 100%;
+}

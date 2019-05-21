@@ -1,0 +1,164 @@
+<div style="background-image: url('assets/images/broker-pen-1024x682.jpg'); background-attachment: fixed; background-size: cover;background-repeat: no-repeat;">
+    <div style="background-color: rgba(0,0,0,0.3)">
+        <div class="my-container">
+            <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px',fullScreenBackdrop:true }"></ngx-loading>
+        </div>
+        <div class="container" style="overflow-x: hidden;">
+            <div class="row justify-content-center">
+                <div class="col-sm-12 col-md-12">
+                    <div class="page-header text-center">
+                        <h2 class="font-patua margin-top-20 text-White" data-aos="zoom-in" data-aos-easing="ease-in-back" data-aos-delay="300"     data-aos-offset="0" style="text-shadow:1mm 1mm 2px black; font-weight: bold; letter-spacing: 2px"><i class="fa fa-warehouse margin-right-10"></i>List of<span *ngIf="option === 'available'" class="font-patua margin-top-20"> Available</span><span *ngIf="option === 'blocked'" class="font-patua margin-top-20"> Unavailable</span>
+                            <span *ngIf="option === 'sold'" class="font-patua margin-top-20"> Sold</span><span *ngIf="option === 'rented'" class="font-patua margin-top-20"> Rented</span> Properties</h2>
+                            <div class="btn-group-sm" id="mini-fab">
+                                <a class="btn btn-fab" data-toggle="tooltip" data-placement="left" data-original-title="SMS" title="Low to Hight Price" id="lowtohigh" (click)="sort('4')">
+                                    <img src="./assets/sort/descending-sort.png">
+                                </a>
+
+                                <a class="btn btn-fab" data-toggle="tooltip" data-placement="left" data-original-title="Other" title="High To Low Price" id="hightolow" (click)="sort('3')">
+                                    <img src="./assets/sort/ascending-sort.png">
+                                </a>
+
+                                <a class="btn btn-fab" data-toggle="tooltip" data-placement="left" data-original-title="Mail" title="Old Properties" id="oldFirst" (click)="sort('2')">
+                                    <img src="./assets/sort/apartment.png">
+                                </a>
+                                <a class="btn btn-fab" data-toggle="tooltip" data-placement="left" data-original-title="Mail" title="New Properties" id="newFirst" (click)="sort('1')">
+                                    <img src="./assets/sort/home.png">
+                                </a>
+                            </div>
+                            <div class="btn-group">
+                                <a href="javascript:void(0)" (click)="openToggle()" class="btn btn-fab" id="openFab">
+                                    <!-- <i class="fa fa-sort fa-2x"></i> -->
+                                    <img src="./assets/sort/funnel.png">
+                                </a>
+                                <a href="javascript:void(0)" (click)="closeToggle()" class="btn btn-fab" id="closeFab">
+                                    <!-- <i class="fa fa-sort fa-2x"></i> -->
+                                    <img src="./assets/sort/funnel.png">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row row-eq-height justify-content-center" *ngIf="allProperty">
+                            <div class="col-md-4 col-sm-12 ipad_two_box" *ngFor=" let property of allProperty"  data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
+                             <div class="card-deck" style="min-height: 100% !important;">
+                                <div class="card mb-3">
+                                    <div class="m-2 d-flex justify-content-center" *ngIf="property.images.length<=0" (click) = "viewDetails(property._id)">
+
+                                        <img class="img-fluid fix-heigth responsive_fix_heigth[_ngcontent-c2]" src="./assets/images/noImage.png" alt="imagesUrl">
+                                    </div>
+                                    <div class="m-2 d-flex justify-content-center" *ngIf="property.images.length>0" (click) = "viewDetails(property._id)">
+
+                                        <img class="img-fluid fix-heigth responsive_fix_heigth" [src]="image_url + property.images[0]" onerror="this.src='./assets/images/noImage.png'"   alt="imagesUrl">
+                                    </div>
+                                    <fieldset (click) = "viewDetails(property._id)">
+                                        <span class="samsar-font text-bold">{{property.uniqueId}}
+                                        </span>						
+                                    </fieldset>
+
+                                    <fieldset (click) = "viewDetails(property._id)">
+                                        <label class="font-Trebuchet text-bold font-18 no-padding" style="color: #bbbbb8 !important;">Property Details</label>
+                                        <table class="tb-property">
+                                            <tr>
+                                                <td width="30%" class="align-top">
+                                                    Price :	
+                                                </td>
+                                                <td width="70%" class="align-top">
+                                                    &euro; {{property.price}} <span *ngIf= "property.garage == true" class="extra-content"><br>Garage Included</span><span *ngIf= "property.garden == true" class="extra-content"> <br>Garden Included</span><span *ngIf= "property.swimmingPool == true" class="extra-content"> <br>Swimming Pool Included</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Area Size :
+                                                </td>
+                                                <td>
+                                                    {{property.area}} - Rooms: {{property.rooms}}							
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td class="align-top">
+                                                    Address : 
+                                                </td>
+                                                <td class="align-top extra-content">
+                                                    {{property.propertyAddress}}
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    Postal Code : 
+                                                </td>
+                                                <td>
+                                                    {{property.postalCode}}
+                                                </td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>
+                                                    City : 
+                                                </td>
+                                                <td>
+                                                    {{property.city.name}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Country : 		
+                                                </td>
+                                                <td>
+                                                    {{property.country.name}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Status :		
+                                                </td>
+                                                <td>
+                                                    {{property.status}}		
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </fieldset>
+
+                                    <div class="container justify-content-arround margin-bottom-10 margin-top-10" *ngIf="userType == 0" style="margin-top: auto !important;bottom: 0px !important;">
+                                        <div class="row padding-left-10 padding-right-10" >
+
+                                            <a class="col-6 btn btn-contact" href="tel:{{property.agent.phone}}"><i class="fa fa-phone fa-flip-horizontal margin-right-5" title="{{property.agent.phone}}"></i>Phone</a>
+
+                                            <a class="col-6 btn btn-contact" href="mailto:{{property.agent.email}}" target="_top"><i class="far fa-envelope margin-right-5" title="{{property.agent.email}}"></i>Email</a>
+                                        </div>
+
+                                    </div>
+                                    <div class="container margin-bottom-10 margin-top-10 justify-content-arround"  *ngIf="userType != 0" style="margin-top: auto !important;bottom: 0px !important;">
+                                     
+                                        <div class="row padding-left-10 padding-right-10">
+                                            <a class="col-6 btn btn-contact" href="tel:+32 489088585"><i class="fa fa-phone fa-flip-horizontal margin-right-5"></i> Phone</a>
+                                            <a class=" col-6 btn btn-contact" href="mailto:info@samsarcom.be" target="_top"><i class="far fa-envelope margin-right-5"></i> Email</a>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul *ngIf="pager.pages && pager.pages.length" class="pagination justify-content-center">
+                        <li [ngClass]="{disabled:pager.currentPage === 1}" class="list-item">
+                            <a class="page-link" (click)="setPage(1)">First</a>
+                        </li>
+                        <li [ngClass]="{disabled:pager.currentPage === 1}" class="list-item">
+                            <a class="page-link" (click)="setPage(pager.currentPage - 1)">Previous</a>
+                        </li>
+                        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="list-item">
+                            <a class="page-link" (click)="setPage(page)">{{page}}</a>
+                        </li>
+                        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="list-item">
+                            <a class="page-link" (click)="setPage(pager.currentPage + 1)">Next</a>
+                        </li>
+                        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="list-item">
+                            <a class="page-link" (click)="setPage(pager.totalPages)">Last</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

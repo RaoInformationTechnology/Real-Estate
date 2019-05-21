@@ -1,0 +1,48 @@
+page-update-profile{
+	.background{
+		background-image: url('../assets/imgs/background(2).jpg');
+		background-repeat: no-repeat;
+		background-size:100% 100%;
+		background-position:center bottom;
+	}
+
+	fieldset {
+		max-width:500px;
+		border: 1.5px solid darkgrey; 
+		padding:8px;
+		margin-bottom: 10px !important;
+		border-radius: 5px; 
+	}
+
+	a {
+		cursor: pointer;
+	}
+
+	.font-Impact {
+		font-family : "Impact";
+	}
+
+	.text-bold{
+		font-weight: bold !important;
+		font-size:17px !important;
+	}
+
+	.samsar-btn{
+		background-color: #0b7997;
+	}
+
+	.slide-zoom {
+    	height: 100%;
+  	}
+}
+
+.title-responsive {
+    font-family: -apple-system, "Helvetica Neue", "Roboto", sans-serif;
+    text-align: center !important;
+    font-weight: 500;
+    letter-spacing: normal;
+    text-transform: uppercase;
+    color: #000;
+    margin: 11px 8px 11px 0;
+    font-size:17px !important;
+}

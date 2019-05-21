@@ -1,0 +1,61 @@
+1	<ion-header>
+
+    <ion-navbar color="myColor">
+        <ion-title>Set Default Search</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="background respp_input" padding>
+    <div class="row" justify-content-center>
+        <div col-12 col-sm-8 col-md-8>
+            <ion-list>
+                <ion-grid>
+                    <ion-row>
+                        <ion-item col-12 margin-top class="border margin">
+                            <ion-label [hidden]="buyRent">Select Buy / Rent</ion-label>
+                            <ion-select [(ngModel)]="buyRent" (ionChange)="changeBuyRent(buyRent)">
+                                <ion-option value="Buy">Buy</ion-option>
+                                <ion-option value="Rent">Rent</ion-option>
+                            </ion-select>
+                        </ion-item>
+                        <ion-item col-12 class="border margin_top">
+                            <ion-label [hidden]="Type">Select Property Type</ion-label>
+                            <ion-select [(ngModel)]="Type" (ionChange)="changeType(Type)">
+                                <ion-option *ngFor="let type of propertyType" value={{type._id}}>{{type.name}}</ion-option>
+                            </ion-select>
+                        </ion-item>
+
+                        <ion-item col-12 class="border margin-top">
+                            <ion-label [hidden]="countryId">Select Country</ion-label>
+                            <ion-select [(ngModel)]="countryId" (ionChange)="changeCountry(countryId)">
+                                <ion-option *ngFor="let country of countries" value={{country._id}}>{{country.name}}</ion-option>
+                            </ion-select>
+                        </ion-item>
+
+
+                        <ion-item col-12 class="border margin-top">
+                            <ion-label [hidden]="city">Select a City / an Area</ion-label>
+                            <ion-select [(ngModel)]="city" (ionChange)="changeCity(city)">
+                                <ion-option *ngFor="let c of cities" value={{c._id}}>{{c.name}}</ion-option>
+                            </ion-select>
+                        </ion-item>
+
+                    </ion-row>
+                    <ion-row >
+                        <ion-col col-6>
+                            <button ion-button full text-capitalize class="samsar" (click)="setSearch()" [ngStyle]="{'background-color': buttonColor}" style="width: 100% !important;">Save</button>
+                        </ion-col>
+                        <ion-col col-6 *ngIf ="flag != true" >
+                                 <button ion-button full text-capitalize class="samsar"  (click)="Cancle()" [ngStyle]="{'background-color': buttonColor}" style="width: 100% !important;">Cancel</button>
+                        </ion-col>
+                        <ion-col col-6 *ngIf="flag != false" >
+                                 <button ion-button full text-capitalize class="samsar"  (click)="clearSearch()" [ngStyle]="{'background-color': buttonColor}" style="width: 100% !important;">Clear</button>  
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-list>
+        </div>
+    </div>
+</ion-content>

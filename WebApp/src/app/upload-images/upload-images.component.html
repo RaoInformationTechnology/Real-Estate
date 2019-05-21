@@ -1,0 +1,166 @@
+<div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px',fullScreenBackdrop:true }"></ngx-loading>
+</div>
+<div class="container">
+    <div class="row justify-content-center  margin-top-20 w3-grey bg-color">
+
+        <div id="location" class="col-12 col-md-4" (click)="toggleView('location')" style="cursor: pointer; border: 1px solid #dddddd; padding: 2px;">
+            <h3 class="text-center margin-top-2 title_hthree">Place Property On Map</h3>
+        </div>
+        <div id="image" class="col-12 col-md-4" (click)="toggleView('image')" style="cursor: pointer; border: 1px solid #dddddd; padding: 2px;">
+            <h3 class="text-center margin-top-2 title_hthree">Upload Property Images</h3>
+        </div>
+        <div id="updateProperty" class="col-12 col-md-4" (click)="toggleView('updateProperty')" style="cursor: pointer; border: 1px solid #dddddd; padding: 2px;">
+            <h3 class="text-center margin-top-2 title_hthree">Edit Previous Details</h3>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 offset-md-2 col-md-8">
+
+            <div [hidden]="view != 'image'">
+                <div class="page-header text-center margin-top-20 margin-bottom-20">
+                    <h2 class="text-center font-patua" style="text-align: center !important;">Upload Property Images</h2>
+                </div>
+
+                <div class="row justify-content-center">
+                    <p><sup>*</sup>First uploaded image would be displayed as the header image in single property card</p>
+                </div>
+                <div class="row justify-content-center margin-top-20">
+                    <form id="img_upload">
+                        <div class="form-group px-2">
+                            <label class="btn btn-secondary">Choose Property Images
+                                <input type="file" #fileupload1 name="thumbnail" (change)="fileChange1(fileupload1.files)" class="hidden" multiple/>
+                            </label>
+                        </div>
+                        <div class="text-center margin-top-15">
+                            <button type="submit" class="btn mycolor margin-5" (click)="onSubmit()">Upload Property Images</button>
+                            <!-- <button type="button" class="btn btn-primary margin-5" data-toggle="modal" data-target="#updateModal">
+                                <i class="fa fa-chevron-left" aria-hidden="true"></i> Edit Previous Details
+                            </button> -->
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card margin-top-20 margin-bottom-10">
+
+                    <h2 class="text-center font-patua margin-top-10">Uploaded Property Images</h2>
+                    <div class="row margin-top-20 margin-bottom-10 justify-content-center" *ngIf="property">
+                    <h4 class="margin-top-20 margin-bottom-20" *ngIf="images.length == 0">No Image Found!</h4>
+                        <div class="col-sm-6 col-md-4 margin-5" *ngFor=" let image of images; let i = index ">
+                           <img class="card-img-top" [src]="image_url + image" onerror="this.src = './assets/imsges/noImage.png'" alt="Property Images" width="100%">
+
+                           <button align="center" class="btn btn-block text-danger text-center" (click)="deleteImage(i)" style="bottom: 0;position: relative;"><i class="fa fa-trash-alt"></i></button>
+                       </div>
+
+                   </div>
+               </div>
+           </div>
+           <div [hidden]="view != 'location'" class="margin-bottom-20">
+
+            <div class="page-header text-center margin-top-20 margin-bottom-20">
+                <h2 class="text-center font-patua" style="text-align: center !important;">Choose Location</h2>
+            </div>
+
+            <div class="container">
+
+                <div class="form-group">
+                    <input placeholder="Search Property Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl">
+                </div>
+                <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+                    <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]=true (dragEnd)="markerDragEnd($event)"></agm-marker>
+                </agm-map>
+                <div class="row justify-content-center margin-top-10">
+
+                    <button class="btn btn-secondary margin-5" (click)="submitLocation()">Submit</button>
+                </div>
+            </div>
+        </div>
+        <div [hidden]="view != 'updateProperty'">
+           <div class="page-header text-center margin-top-20 margin-bottom-20">
+            <h2 class="text-center font-patua" style="text-align: center !important;">Edit Previous Property Details</h2>
+        </div>
+        <div class="card margin-top-20 margin-bottom-20 padding-10">
+            <form *ngIf = "property">
+                <div class="form-group" ng2-auto-complete [source]="Type" (valueChanged)="valueChangedOfType($event)">
+                   <input type="text" id="propertyType" class="form-control"  name="propertyType" placeholder="Enter Property Type">
+               </div>
+               <div class="form-group">
+                <textarea id="propertyAddress" class="form-control" [(ngModel)]="property.propertyAddress" name="propertyAddress" placeholder="Address"></textarea>
+            </div>
+            <div class="form-group" ng2-auto-complete [source]="users" (valueChanged)="valueChangedOfagent($event)">
+               <input type="text" id="agent" class="form-control" [(ngModel)]="property.agent.firstName" name="agent" placeholder="Enter Agent Name" autocomplete="off">
+           </div>
+           <div class="form-group">
+            <input type="text" id="postalCode" class="form-control" [(ngModel)]="property.postalCode" name="postalCode" placeholder="Postal Code">
+        </div>
+        <div class="form-group">
+            <input type="text" id="area" class="form-control" [(ngModel)]="property.area" name="area" placeholder="Enter Area">
+        </div>
+        <div class="form-group" ng2-auto-complete [source]="country" (valueChanged)="valueChangedOfCountry($event)" *ngIf="property.country">
+           <input type="text" id="country" class="form-control font-Palatino" [(ngModel)]="property.country.name" autocomplete="off"  name="country" placeholder="Enter Country">
+       </div>
+       <div class="form-group" ng2-auto-complete [source]="City" (valueChanged)="valueChangedOfCity($event)" *ngIf="property.city">
+           <input type="text" id="city" class="form-control" [(ngModel)]="property.city.name" name="city" placeholder="Enter City" autocomplete="off">
+       </div>
+       <div class="form-group">
+        <input type="text" id="state" class="form-control" [(ngModel)]="property.state" name="state" placeholder="Enter State">
+    </div>
+    <div class="form-group">
+        <input type="text" id="rooms" class="form-control" [(ngModel)]="property.rooms" name="rooms" placeholder="How many rooms?">
+    </div>
+    <div class="row justify-content-between">
+        <div class="form-group col-md-3">
+            <input type="text" id="currency" class="form-control" [(ngModel)]="property.currency" name="currency" placeholder="Enter Currency">
+        </div>
+        <div class="form-group col-md-9">
+            <input type="text" id="price" class="form-control" [(ngModel)]="property.price" name="price" placeholder="Enter Price">
+        </div>
+    </div>
+    <div class="form-group text-left">
+        <label>Sell / Rent</label>
+        <div class="form-check">
+            <input type="radio" class="with-gap" id="buy" [(ngModel)]="property.buyRent" name="buyRent" value="Buy">
+            <label for="buy">Sell</label>
+        </div>
+        <div class="form-check">
+            <input type="radio" class="with-gap" id="rent" [(ngModel)]="property.buyRent" name="buyRent" value="Rent">
+            <label for="rent">Rent</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <textarea id="additionalInfo" class="form-control md-textarea" [(ngModel)]="property.additionalInfo" name="additionalInfo" rows="5" placeholder="Additional Information"></textarea>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-4 text-center">
+            <p class="">Has Garden?</p>
+            <label class="switch">
+                <input type="checkbox" id="garden" [(ngModel)]="property.garden" name="garden" value="false">
+                <span class="slider round" style="top:0 !important"></span>
+            </label>
+        </div>
+        <div class="form-group col-md-4 text-center">
+            <p>Has Garage?</p>
+            <label class="switch">
+                <input type="checkbox" id="garage" [(ngModel)]="property.garage" name="garage" value="false">
+                <span class="slider round" style="top:0 !important"></span>
+            </label>
+        </div>
+        <div class="form-group col-md-4 text-center">
+            <p>Has Swimming Pool?</p>
+            <label class="switch">
+                <input type="checkbox" id="swimmingPool" [(ngModel)]="property.swimmingPool" name="swimmingPool" value="false">
+                <span class="slider round" style="top:0 !important"></span>
+            </label>
+        </div>
+    </div>
+    <div class="col-12 text-center py-4 mt-3">
+        <button type="submit" style="width: 100%;" class="btn btn-success" (click)="updateProperty(property,'Property details updated')">Update Property Details</button>
+    </div>
+</form>
+<div>
+</div>
+</div>
+</div>
+</div>

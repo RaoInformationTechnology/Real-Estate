@@ -1,0 +1,123 @@
+<ion-header>
+	<ion-navbar color="myColor">
+		<button ion-button menuToggle end>
+			<ion-icon name="menu"></ion-icon>
+		</button>
+		<ion-title>My Profile</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content>
+	<ion-card>
+		<div *ngIf="user">
+			<ion-card-header>
+				<p class="profile-text" float-left><strong>My Profile</strong></p>
+				<a (click)="updateUserDetail(user)" float-right><i class="far fa-edit"></i></a>
+			</ion-card-header>
+			<ion-card-content>
+				<ion-row>
+					<ion-col col-4>
+						<strong>Name</strong>
+					</ion-col>
+					<ion-col col-8>
+						{{user.firstName}} {{user.lastName}}
+					</ion-col>
+				</ion-row>
+
+				<ion-row>
+					<ion-col col-4>
+						<strong>Address</strong>
+					</ion-col>
+					<ion-col col-8>
+						{{user.address}}
+					</ion-col>
+				</ion-row>
+
+				<ion-row>
+					<ion-col col-4>
+						<strong>City</strong>
+					</ion-col>
+					<ion-col col-8>
+						{{user.city}}
+					</ion-col>
+				</ion-row>
+
+				<ion-row>
+					<ion-col col-4>
+						<strong>State</strong>
+					</ion-col>
+					<ion-col col-8>
+						{{user.state}}
+					</ion-col>
+				</ion-row>
+
+				<ion-row>
+					<ion-col col-4>
+						<strong>Postal Code</strong>
+					</ion-col>
+					<ion-col col-8>
+						{{user.postalCode}}
+					</ion-col>
+				</ion-row>
+
+				<ion-row>
+					<ion-col col-4>
+						<strong>Country</strong>
+					</ion-col>
+					<ion-col col-8>
+						{{user.country}}
+					</ion-col>
+				</ion-row>
+
+				<ion-row>
+					<ion-col col-4>
+						<strong>Email</strong>
+					</ion-col>
+					<ion-col col-8>
+						{{user.email}}
+					</ion-col>
+				</ion-row>
+
+				<ion-row>
+					<ion-col col-4>
+						<strong>Phone Number</strong>
+					</ion-col>
+					<ion-col col-8>
+						{{user.phone}}
+					</ion-col>
+				</ion-row>
+
+				<ion-row>
+					<ion-col col-4>
+						<strong>Mobile Number</strong>
+					</ion-col>
+					<ion-col col-8>
+						{{user.mobile}}
+					</ion-col>
+				</ion-row>
+
+				<ion-row>
+					<ion-col col-4>
+						<strong>Company</strong>
+					</ion-col>
+					<ion-col col-8>
+						{{user.company}}
+					</ion-col>
+				</ion-row>
+			</ion-card-content>
+		</div>
+		<!-- <div *ngIf="!user">
+			<h2 class="margin-top-20" style="text-align: center !important;"><i class="fa fa-spinner fa-spin fa-4x" margin-right></i>Loading</h2>
+		</div> -->
+
+	</ion-card>
+	<!-- <ion-card *ngIf="user">
+		<ion-card-header>
+			<ion-item (click)="getMyProperties()">
+				<h2 item-start><strong>My Properties</strong></h2>
+				<ion-badge color="myGray" item-end>{{user.propertyCount}}</ion-badge>
+			</ion-item>
+		</ion-card-header>
+	</ion-card> -->
+</ion-content>

@@ -1,0 +1,168 @@
+<div id="mySidenav" class="sidenav font-CenturyG" style="z-index:9999;">	
+    <div class="row cursor-pointer">
+        <span *ngIf = "role == 0" class="margin-top-20 padding-left-20 font-32"><i class="fa fa-user-circle"></i> {{firstName}} </span>
+        <span *ngIf="role == 1" (click)="userProfile()" class="margin-top-20 padding-left-20 font-32" title="Click here for Your profile"><i class="fa fa-user-circle"></i> {{firstName}} </span>
+        <span *ngIf="role == 2" class="margin-top-20 padding-left-20 font-32" title="Click here for Your profile"><i class="fa fa-user-circle"></i> {{firstName}} </span>
+    </div>
+
+
+    <!-- SIDENAV -->
+    <div class="no-padding menu-list-background-teal custom-padding-left-20">
+        <ul class="list-group margin-top-20">
+            <li routerLink='' (click)="closeNav()" class="list-group-item border-top-none home "><i class="fa fa-home margin-right-5"></i> Home</li>
+            <!-- <li (click)="userProfile()"  class="list-group-item myProfile"><i class="far fa-user-circle margin-right-5"></i> Your Profile</li> -->
+
+            <li class="list-group-item dropdown myProfile">
+                <span class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user-circle margin-right-5"></i>Profile</span>
+                <ul class="dropdown-menu text-White" style="background-color: #707070; width: 100%;">
+                    <li style="width: 100%;" routerLink='searchProperty' (click)="closeNav()" class="list-group-item searchProperty border-top-none"> <i class="fab fa-searchengin margin-right-5"></i> Search Property</li>
+
+                    <li style="width: 100%;" routerLink="search" (click)="closeNav()" class="list-group-item search border-top-none" > <i class="fab fa-searchengin margin-right-5"></i> Search</li>
+
+                    <li style="width: 100%;" routerLink='createProperty' (click)="closeNav()"  class="list-group-item addNewProperty "><i class="fa fa-plus-square margin-right-5"></i> Add Listing</li>
+
+                    <li style="width: 100%;" routerLink='massUpload' (click)="closeNav()"  class="list-group-item massUpload "> <i class="fa fa-upload margin-right-5"></i> Mass Upload</li>
+
+                    <li style="width: 100%;" routerLink='propertyType' (click)="closeNav()" class="list-group-item addNewPropertyType "><i class="fa fa-plus-square margin-right-5"></i> Add Property Type</li>
+
+                    <li style="width: 100%;" routerLink='userList' (click)="closeNav()" class="list-group-item users "><i class="fa fa-users margin-right-5"></i> Manage Users</li>
+
+                    <li style="width: 100%;" routerLink="propertyList/available" (click)="closeNav()" class="list-group-item allProperty "><i class="fa fa-list-alt margin-right-5"></i>Available Properties</li>
+
+                    <li style="width: 100%;" routerLink="propertyList/blocked" (click)="closeNav()" class="list-group-item unavailableProperty"><i class="fa fa-list-alt margin-right-5"></i>Unavailable Properties</li>
+
+                    <li style="width: 100%;" routerLink="propertyList/sold" (click)="closeNav()" class="list-group-item soldProperty "><i class="fa fa-list-alt margin-right-5"></i>Sold Properties</li>
+
+                    <li style="width: 100%;" routerLink="propertyList/rented" (click)="closeNav()" class="list-group-item rentedProperty"><i class="fa fa-list-alt margin-right-5"></i>Rented Properties</li>
+
+                    <li style="width: 100%;" routerLink='listingConformation' (click)="closeNav()"  class="list-group-item listingConformation "><i class="fa fa-plus-square margin-right-5"></i> Un-verified Listings</li>
+
+                    <li style="width: 100%;" routerLink="pending-request-for-validity" (click)="closeNav()" class="list-group-item border-bottom-none pendingRequest "><i class="fas fa-list margin-right-5"></i> Pending Request</li>
+
+                    <li style="width: 100%;" routerLink="/properties-about-to-expire" (click)="closeNav()" class="list-group-item border-bottom-none expiringProperties"> <i class="far fa-user margin-right-5"></i> Expiring Properties</li>
+
+                </ul>
+            </li>
+
+            <li (click)="buyOrRent('Buy')" class="list-group-item buy"><i class="fas fa-credit-card margin-right-5"></i> Buy</li>
+
+            <li (click)="buyOrRent('Rent')" class="list-group-item rent"><i class="fas fa-cart-arrow-down margin-right-5"></i> Rent</li>
+
+            <li routerLink="aboutUs" (click)="closeNav()" class="list-group-item aboutUs " > <i class="fas fa-info-circle margin-right-5"></i> About Us</li>
+
+            <li routerLink="contactUs" (click)="closeNav()" class="list-group-item contactUs " > <i class="fas fa-phone margin-right-5"></i> Contact Us</li>
+
+            <li class="list-group-item border-bottom-none logout " (click) ="logOutUser()"><i class="fa fa-sign-out-alt margin-right-5"></i> Sign Out</li>
+
+            <li routerLink="login" (click)="closeNav()" class="list-group-item border-bottom-none login"><i class="fa fa-sign-in-alt margin-right-5"></i> Sign In</li>
+        </ul>
+    </div>
+</div>
+
+
+<!-- Desktop Nav -->
+<!-- <div class="col-md-12 no-padding no-margin" style="position: static;"> -->
+<div id="home-desktop" class="d-none d-sm-block w3-white" style="padding-top:50px;">
+    <div id="new-top-header" >
+        <ul class="top-header-ul" style="display: block;">
+            <li > <a routerLink="contactUs"> <span> CONTACT US </span></a></li>
+            <li > <a href="tel:+32 489 088 585"> <i style="transform: rotate(90deg);" class="fas  fa-phone"></i> </a>       </li>
+            <li > <a href="https://www.facebook.com/samsarom.aqaraat.7"> <i class="fab  fa-facebook-f"></i> </a>  </li>
+            <li > <a href="https://plus.google.com/117991578155121740576"> <i class="fab  fa-google-plus-g"></i> </a>  </li>
+            <li > <a href="skype:info_892890"> <i class="fab  fa-skype"></i> </a>  </li>
+            <li > <a href="https://api.whatsapp.com/send?phone=32489088585"> <i class="fab fa-whatsapp"></i> </a></li>
+            <li class="pull-right" *ngIf ="role == 2">
+                <span>
+                    <a href="javascript:void(0)" routerLink="login" class="font-lobster hvr-bounce" style="font-size:16px; padding-right: 15px; line-height: 50px"><i class="fas fa-users"></i>  Member's Area</a>
+                </span>
+            </li>
+            <li class="pull-right" *ngIf ="role != 2">
+                <span>
+                    <a href="javascript:void(0)" class="font-lobster hvr-bounce" style="font-size:16px; padding-right: 15px; line-height: 50px"><i class="fas fa-users"></i> {{firstName}} </a>
+                </span>
+            </li>
+
+        </ul>
+    </div>
+    <div class="row custom-gradient" id="header-big-whole">
+        <div class="col-md-2 col-sm-2 col-sm-offset-1 text-center"> 
+
+            <div style="padding:5px; padding-left: 10px;">
+                <img src="assets/images/logo.png" id='header-logo' class="img-fluid" style="max-height: auto;">
+            </div>
+        </div>
+        <div class="col-sm-2"></div>
+  
+        <div class="col-md-6 col-sm-6 text-right">
+            <img src="assets/images/header-side-img.png" id='header-side-img' class="img-fluid" style="height: 150px; width: auto; margin:auto; opacity: 0.5">
+        </div>
+    </div>
+    <div class="row " id="header-small-row">
+
+        <div class="col-md-2 hidden-md-down text-right " >
+            <img src="assets/images/logo.png" id='header-logo-small' class="img-fluid header-small-item" style="height: 85px;">
+        </div>
+          <div class="col-md-10">
+            <div id="desktop-nav" class="w3-bar">
+  
+                <a href="javascript:void(0)" (click) ="logOutUser()" class="w3-bar-item hvr-underline-from-center logout w3-right margin-right-10" id="profile-menu-item"><i class="fa fa-sign-out-alt margin-right-5"></i> Sign Out</a>
+
+                <!-- Commented So that SignIn can be done from Members' area -->
+                <!-- <a href="javascript:void(0)" routerLink="login" class="w3-bar-item hvr-underline-from-center  login w3-right margin-right-10 margin-left-10" id="profile-menu-item"><i class="fa fa-sign-in-alt margin-right-5"></i> Sign In</a> -->
+
+                <a href="javascript:void(0)" routerLink="aboutUs" class="w3-bar-item hvr-underline-from-center  aboutUs w3-right margin-right-10" id="profile-menu-item"><i class="fas fa-info-circle"></i> About Us</a>
+                <!--  <a (click)="buyOrRent('Rent')" href="javascript:void(0)" class="w3-bar-item hvr-underline-from-center  w3-right rent margin-right-10 margin-left-10"> Rent</a>
+         
+                 <a (click)="buyOrRent('Buy')"  href="javascript:void(0)" class="w3-bar-item hvr-underline-from-center  w3-right buy margin-right-10 margin-left-10"> Buy</a>
+                -->
+
+                <!--       <div class="w3-dropdown-hover w3-right  margin-right-10 margin-left-10 font-16" >
+                        <a href="javascript:void(0)" class="w3-button hvr-underline-from-center"  id="profile-menu-item"><i class="fas fa-globe"></i> Search Property </a>
+                        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        </div>
+                      </div>
+                -->
+                <div class="w3-dropdown-hover w3-right  margin-right-10 font-16 myProfile" >
+                    <a href="javascript:void(0)" class="w3-button hvr-underline-from-center" id="profile-menu-item"><i class="fas fa-user-circle"></i> My Profile <i class="fas fa-caret-down"></i></a>
+                    <div class="w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="javascript:void(0)" (click)="userProfile()" class="w3-bar-item hvr-fade userProfile"> My Profile</a>
+                        <a routerLink="searchProperty" class="w3-bar-item hvr-fade searchProperty"> Search Property</a>
+                        <a routerLink='/signup' class="w3-bar-item hvr-fade  addNewUser"> Add User</a>
+
+
+                        <a routerLink="userList" class="w3-bar-item hvr-fade users">Manage Users</a>
+                        <a routerLink="createProperty" class="w3-bar-item hvr-fade  addNewProperty" [hidden] = 'userStatus == "false"'> Add Single Listing</a>
+                        <a routerLink="massUpload" class="w3-bar-item hvr-fade  massUpload"> Add Mass Listing</a>
+
+                        <a routerLink='propertyType' class="w3-bar-item hvr-fade  addNewPropertyType"> Add Property Type</a>
+
+                        <a routerLink="/properties-about-to-expire" class="w3-bar-item hvr-fade expiringProperties" [hidden] = 'userStatus == "false"'>Expiring Properties</a>
+
+                        <a routerLink="propertyList/available" class="w3-bar-item hvr-fade  allProperty ">Available Properties</a>
+
+                        <a routerLink="propertyList/blocked" class="w3-bar-item hvr-fade   unavailableProperty"> Unavailable Properties</a>
+
+                        <a routerLink="propertyList/sold" class="w3-bar-item hvr-fade  soldProperty "> Sold Properties</a>
+                        <a routerLink="propertyList/rented" class="w3-bar-item hvr-fade  rentedProperty "> Rented Properties</a>
+
+                        <a routerLink="listingConformation" class="w3-bar-item hvr-fade  w3-right listingConformation"> Unverified Properties</a>
+                        <a routerLink="pending-request-for-validity" class="w3-bar-item hvr-fade pendingRequest "> Renew Property Requests</a>
+                    </div>
+                </div>
+
+
+                <a href="javascript:void(0)" (click)="buyOrRent('Buy')" class="w3-bar-item hvr-underline-from-center  aboutUs w3-right margin-right-10"> <i class="fas fa-dollar-sign"></i> Buy Property </a>
+                <a href="javascript:void(0)" (click)="buyOrRent('Rent')" class="w3-bar-item hvr-underline-from-center  aboutUs w3-right margin-right-10"> <i class="fas fa-building"></i> Rent Property </a>
+
+
+
+                <!-- <a routerLink="search" class="w3-bar-item  w3-right search margin-right-10 margin-left-10"> Search</a>  -->
+
+
+                <a routerLink="" class="w3-bar-item  w3-right home margin-right-10 hvr-underline-from-center"> <i class="fas fa-home"></i>  </a>
+            </div>    
+        </div>
+    </div>
+
+</div>
+

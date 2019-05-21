@@ -1,0 +1,24 @@
+<div class="container margin-top-20">
+	<div class="row justify-content-center">
+		<div class="col-12 col-md-6">
+			<div class="page-header text-center margin-top-20 margin-bottom-20">
+				<h2 class="font-patua"><i class="far fa-envelope-open margin-right-20"></i>Check your email!</h2>
+			</div>
+			<p class="text-center" *ngIf="user">We’ve sent a verification code to <strong>{{user.email}}</strong> Enter it below to confirm your email address.</p>
+			<br><br><br>
+			<label>
+				<span class="text-center font-20">Your verification code!!!</span>
+			</label>
+			<form class="form-horizontal">
+				<div class="form-group input-group-lg">
+					<input class="form-control" type="text" [(ngModel)]="randomCode" name="verificationCode" placeholder="Enter your code..">
+				</div>
+				<div class="form-group">
+					<button class="btn btn-success" (click)="verify()">Verify</button>
+				</div>
+			</form>
+			<h6 class="text-right text-Red"><sup>*</sup> Your code will expire in <span id="demo"></span> minitues. </h6>
+			<a class="float-right" id="newCode" (click)="getNewCode()"></a>
+		</div>
+	</div>
+</div>

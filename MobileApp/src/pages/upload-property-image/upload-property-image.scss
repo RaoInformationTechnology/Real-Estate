@@ -1,0 +1,75 @@
+page-upload-property-image {
+
+	a{
+		cursor: pointer;
+	}
+	
+	.hidden{
+		display: none;
+	}
+
+	.item-md.item-block .item-inner {
+		padding-right: 8px;
+		border-bottom: none;
+	}
+
+	agm-map {
+		height: 300px;
+	}
+
+	.border-round{
+		border: 1px solid #d9dbdc;
+		border-radius: 5px;
+		height: 10px;
+		margin: 5px 0 5px 0;
+	}
+	.fixed{
+		position: -webkit-sticky;
+  		position: sticky;
+  		top: 0;
+  		background-color: white;
+  		z-index: 1;
+  		border-bottom: 1px solid gray;
+	}
+
+	.label-md {
+	    margin: 13px 0px 13px 0px;
+	    width: 100%;
+	}
+
+	.item-md.item-block .item-inner {
+	    padding-right: 0px;
+	    border-bottom: none;
+	}
+
+	.card-md {
+    	margin: 0px;
+    	width: 100%;
+    }
+
+	input[type=text] {
+	    width: 100%;
+	    padding: 12px 20px;
+	    margin: 8px 0;
+	    box-sizing: border-box;
+	    border: 3px solid #ccc;
+	    -webkit-transition: 0.5s;
+	    transition: 0.5s;
+	    outline: none;
+	}
+
+	input[type=text]:focus {
+	    border: 3px solid #555;
+	}
+}
+
+.title-responsive {
+    font-family: -apple-system, "Helvetica Neue", "Roboto", sans-serif;
+    text-align: center !important;
+    font-weight: 500;
+    letter-spacing: normal;
+    text-transform: uppercase;
+    color: #000;
+    margin: 11px 8px 11px 0;
+    font-size:17px !important;
+}

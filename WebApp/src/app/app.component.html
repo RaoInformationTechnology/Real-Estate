@@ -1,0 +1,34 @@
+<app-menu></app-menu>
+<div id="main">
+    <div class="d-block d-sm-none d-lg-none d-md-none" *ngIf = 'menuShow != false' style="background-color: rgb(0,116,140) !important; height: 80px;">
+         <div class="row" style="max-height: 80px;">
+            <div class="col-3 text-center" style="height: 80px;">
+                <img src="./assets/images/samsarLogo_small.png" style="padding: 7% !important;" width="auto" height="100%">
+            </div>
+            <div class="col-6" style="margin: auto auto auto auto; ">
+
+                <span class="samsar-font" style="font-size: 30px;margin: 0px;">Samsar</span><span class="com-font" style="font-size: 30px;">Com</span>			
+            </div>
+            <div class="col-3" style="margin: auto;">
+                <span class="menu-button" style="float: right; margin-right: 10px;margin-top: 5px !important" (click)="openNav()">&#9776;</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="bg-ionic-stable" (click)="closeNav()" style="min-height: 500px !important;">
+        <router-outlet (activate)="onActivate()"></router-outlet>
+    </div>	
+
+</div>
+
+
+<div class="row justify-content-around footer" style="">
+    <div class="col-md-12 col-12 margin-auto padding-15">
+
+        <span class="font-Lucida text-center font-white font-16 responsive_text_footer">Copyright Ⓒ 2018 Reserved</span> 
+        <img src="assets/images/logo.png" height="50" class="footer_logo_img">
+
+    </div>
+</div>

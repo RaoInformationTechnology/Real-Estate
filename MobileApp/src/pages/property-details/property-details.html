@@ -1,0 +1,181 @@
+<ion-header>
+	<ion-navbar color="myColor">
+		<ion-title>Property Details</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content>
+	<ion-card margin-top *ngIf="property">
+		<ion-card-content class="design">
+			<div *ngIf="property.images.length<=0">
+				<img src="./assets/imgs/noImage.png" alt="imagesUrl" class="img-fluid fix-heigth">
+			</div>
+			<div *ngIf="property.images.length>0">
+				<ion-slides pager="true">
+					<ion-slide *ngFor="let img of property.images">
+						<img class="img-fluid fix-heigth" [src]="image_url + img" onerror="this.src='./assets/imgs/noImage.png'" alt="imagesUrl">
+					</ion-slide>
+				</ion-slides>
+			</div>
+
+			<div class="property text"  margin-vertical>
+				<div class="row" justify-content-between>
+					<div start>
+						<p class="text" *ngIf= "property.uniqueId"><strong><span class="margin-left-5">{{property.uniqueId}}</span></strong>
+						</p>
+						<!-- <p class="text" *ngIf= "!property.uniqueId"><strong><span>Id:</span><span class="margin-left-5">TR-2018-2</span></strong>
+						</p> -->
+					</div>
+					<div *ngIf="userType !== 'Guest'">
+						<div end *ngIf="user._id===agent._id && agent.userStatus === 'true'">
+							<span *ngIf="!property.verify" class="badge badge-danger padding-5" style="color: red;" margin-right>Unverified</span>
+							<a title="Edit Property Details" (click)="updataProperty(property)"><i class="far fa-edit" margin-right></i></a>
+							<a title="Upload Property Images" (click)="updateImage(property._id)"><i class="fas fa-cloud-upload-alt"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="property">
+				<p class="dark">Property Details</p>
+				<ion-row>
+					<ion-col col-4>
+						Price :
+					</ion-col>
+					<ion-col col-8>
+						&euro; {{property.price}} <span *ngIf= "property.garage == true" class="margin-left-5"><br>Garage Included</span><span *ngIf= "property.garden == true" class="margin-left-5"><br>Garden Included</span><span *ngIf= "property.swimmingPool == true" class="margin-left-5"><br>Swimming Pool Included</span>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col col-4>
+						Property Type:
+					</ion-col>
+					<ion-col col-8>
+						{{property.propertyType.name}}
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col col-4>
+						Area Size :
+					</ion-col>
+					<ion-col col-8>
+						{{property.area}} - Rooms: {{property.rooms}}
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col col-4>
+						Address :
+					</ion-col>
+					<ion-col col-8>
+						{{property.propertyAddress}}
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col col-4>
+						Postal Code :
+					</ion-col>
+					<ion-col col-8>
+						{{property.postalCode}}
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col col-4>
+						City :
+					</ion-col>
+					<ion-col col-8>
+						{{property.city.name}}
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col col-4>
+						Country :
+					</ion-col>
+					<ion-col col-8>
+						{{property.country.name}}
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<ion-col col-4>
+						Status :
+					</ion-col>
+					<ion-col col-8 >
+						{{property.status}}
+					</ion-col>
+				</ion-row>
+				<div *ngIf="userType !== 'Guest'">
+				<ion-row *ngIf="user._id===agent._id && agent.userStatus === 'true' && property.verify">
+					<ion-col col-4>
+						Expiring on :
+					</ion-col>
+					<ion-col col-8>
+						<!-- {{day}}, {{month}} {{dates}}, {{year}} -->
+						{{expiryDate}}
+					</ion-col>
+				</ion-row>
+				<ion-row *ngIf="user._id===agent._id && agent.userStatus === 'true' && property.verify">
+					<ion-col col-4>
+						Published on :
+					</ion-col>
+					<ion-col col-8>
+						{{PublicationDate}}
+					</ion-col>
+				</ion-row>
+				</div>
+			</div>
+			<div *ngIf="userType !== 'Guest'">
+				<div class="property" *ngIf="user._id===agent._id">
+					<p class="dark">Contact Details</p>
+					<ion-row>
+						<ion-col col-4>
+							Name :
+						</ion-col>
+						<ion-col col-8>
+							{{agent.firstName}} {{agent.lastName}}
+						</ion-col>
+					</ion-row>
+
+					<ion-row>
+						<ion-col col-4>
+							Company / Agency :
+						</ion-col>
+						<ion-col col-8>
+							{{agent.company}}
+						</ion-col>
+					</ion-row>
+
+					<ion-row>
+						<ion-col col-4>
+							Office Number:
+						</ion-col>
+						<ion-col col-8>
+							{{agent.phone}}
+						</ion-col>
+					</ion-row>
+
+					<ion-row>
+						<ion-col col-4>
+							Mobile Number :
+						</ion-col>
+						<ion-col col-8>
+							{{agent.mobile}}
+						</ion-col>
+					</ion-row>
+
+					<ion-row>
+						<ion-col col-4>
+							Email :
+						</ion-col>
+						<ion-col col-8>
+							{{agent.email}}
+						</ion-col>
+					</ion-row>
+				</div>
+			</div>
+			<ion-row justify-content-between>
+				<a class="width-half" ion-button color="myColor" float-left href="tel:+32 489088585"><i class="fas fa-phone fa-flip-horizontal" margin-right></i>Call</a>
+				<a class="width-half" ion-button color="myColor" float-right href="mailto:info@samsarcom.be" target="_top"><i class="far fa-envelope" margin-right></i>Email</a>
+			</ion-row>
+		</ion-card-content>
+	</ion-card>
+</ion-content>

@@ -1,0 +1,24 @@
+<div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px',fullScreenBackdrop:true }"></ngx-loading>
+</div>
+<div class="container">
+    <div class="col-sm-12 offset-md-2 col-md-8">
+        <div class="page-header text-center margin-top-20 margin-bottom-20">
+            <h2 class="font-patua text-center" style="text-align: center !important;">Mass Upload Properties</h2>
+        </div>
+        <div class="row justify-content-center margin-top-20">
+            <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+                <div class="form-group px-2">
+                    <label class="btn btn-secondary">Choose Property Records File (.csv OR .xlxs OR excel file)
+
+                        <input type="file" #fileupload1 name="thumbnail" (change)="fileChange1(fileupload1.files)" accept=".csv, .xlsx, .xls" class="hidden"/>
+                    </label>
+                    <span>{{fileName}}</span>
+                </div>
+                <div class="text-center margin-top-15">
+                    <button type="submit" class="btn mycolor">Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

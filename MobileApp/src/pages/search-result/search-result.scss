@@ -1,0 +1,133 @@
+page-search-result {
+    .text-white{
+        color: white !important;
+        font-weight: 300 !important;
+        font-size: 16px !important;
+    }
+
+    .height-full{
+        margin-top: 50% !important;
+    }
+
+    .btn{
+        cursor: pointer !important;
+        color: white !important;
+        font-size: 20px !important;
+    }
+
+    .width-half{
+        width: 48% !important;
+    }
+
+    .fixed{
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        background-color: white;
+        z-index: 1;
+        /*border-bottom: 1px solid gray;*/
+    }
+
+    @media only screen and (max-width: 600px) {
+        agm-map {
+            height: 500px;
+            width: 100%;
+        }
+    }
+
+    @media only screen and (min-width: 600px) and (max-width: 1025px) {
+        agm-map {
+            height: 1000px;
+            width: 100%;
+        }
+    }
+    @media only screen and (min-width: 1025px){
+        agm-map {
+            height: 700px;
+            width: 100%;
+        }
+    }
+
+    .fix-heigth{
+        height: 175px !important;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    a {
+        text-decoration: none;
+        color: white !important;
+    }
+
+    .fa-chevron-left{
+        color: white !important;
+    }
+
+    .fa-phone{
+        color: white !important;
+    }
+
+    .fa-envelope{
+        color: white !important;
+    }
+
+    .custom{
+        cursor: pointer !important;
+        color: rgb(112,112,112) !important;
+    }
+
+    .footer{
+        cursor: pointer !important;
+        margin: 10px 5px 10px 5px !important;
+    }
+
+    .card{
+        border: 1px solid lightgray;
+    }
+
+    .design{
+        padding: 3px 3px 3px 3px;
+    }
+
+    .text{
+        color: #0b7997;
+        font-weight: 700 !important;
+        font-size: 15px !important;
+    }
+
+    .property{
+        margin: 10px 2px 15px 2px;
+        padding: 5px 10px 5px 10px;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+    }
+
+    .margin-bottom-10{
+        margin-bottom: 10px !important;
+    }
+
+    .fa-check{
+        color: green;
+    }
+
+    .fa-ban{
+        color: red;
+    }
+
+    #map_canvas{
+        height: 100%;
+    }
+    .card-md{
+        width: 100% !important;
+        margin: 10px 0px 0px 0px !important;
+    }
+    .hight-auto{
+        height: auto !important;
+    }
+    @media only screen and (min-width:320px)  {
+        .title-ios{
+            margin-top:0px !important;
+        }
+    }
+}

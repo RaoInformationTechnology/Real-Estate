@@ -1,0 +1,136 @@
+page-home {
+
+
+
+
+    .background{
+        background-image: url('../assets/imgs/background(2).jpg');
+        background-repeat: no-repeat;
+        background-size:100% 100%;
+        background-position:center bottom;
+    }
+
+    .samsar{
+        background-color: #0b7997;
+        color: white;
+        font-weight: 700;
+        font-size: 15px;
+        width: 100px !important;
+    }
+
+    .item-md.item-block .item-inner {
+        padding-right: 0;
+        border-bottom: none;
+    }
+
+    .margin{
+        margin: 20px auto auto auto !important;
+    }
+
+    .box-shadow-0{
+        /*box-shadow: 0 0 #fff;*/
+        border: 1px solid #d9dbdc;
+    }
+
+    .mt-10{
+        margin-top: 50px !important;
+    }
+
+    .margin-top{
+        margin-top: 5px !important;
+
+    }
+    .samsar-btn-active{
+        background-color : #0b7997;
+        color: white;
+        text-transform: capitalize;
+        height: 30px !important;
+        margin-right: 0px;
+        font-weight: 700;
+    }
+
+    .samsar-btn{
+        background-color : white;
+        color: black;
+        text-transform: capitalize;
+        height: 30px !important;
+        margin-left: 0px;
+    }
+
+
+    #buy{
+        color: black;
+        backgound: white;
+        padding-right: 10px !important;
+    }
+
+    #rent{
+        color: black;
+        backgound: white;
+        padding-left: 10px !important;
+    }
+
+    .border{
+        border: 1px solid #d9dbdc;
+        height: 15px !important;
+    }
+
+    .bg-color{
+        background-color: #0b7997 !important;
+    }
+
+    .capitalize{
+        text-transform: capitalize !important;
+    }
+
+    .select-text{
+        color: gray;
+        float: end;
+    }
+
+    @media only screen and (min-width:320px)  {
+        .image {
+            height: 150px !important;
+            width: 240px;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+
+    @media only screen and (min-width:360px)  {
+        .image {
+            height: 250px !important;
+            width: 100%;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+
+
+    @media only screen and (min-width:480px)  {
+        .image {
+            height: 250px !important;
+            width: 100%;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+
+    @media only screen and (min-width:768px)  {
+        .image {
+            height: auto !important;
+            width: 100%;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+}
+
+
+.resposive_all_input_bg .item-ios {
+    background-color: rgba(255,255,255,0.7);
+    }
+
+    .resposive_all_input_bg .item-md {
+    background-color: rgba(255,255,255,0.7);
+    }

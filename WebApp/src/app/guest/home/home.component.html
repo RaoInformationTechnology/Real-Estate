@@ -1,0 +1,597 @@
+<!-- <div class="my-container">
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px' }"></ngx-loading>
+</div>
+-->
+<!-- slider -->
+
+<div class="col-sm-12 col-12">
+
+    <div class="row">
+        <div class="my-container">
+            <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px',fullScreenBackdrop:true }"></ngx-loading>
+        </div>
+        <div id="video-bg-div" class="col-12 no-padding no-margin resonsive_height" style="height: 100vh; z-index: 1;">
+            <iframe style="height: 100vh; width: 100%; position: absolute; z-index: 0" src="https://www.youtube.com/embed/g3tB7aFoyjY?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div style="position: absolute; top:0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.5)">
+                <div class="container mt-5 d-sm-block" style="background-color: rgba(0,0,0,0.6);">
+                    <div class="margin-top-20">
+                        <h2 class="font-playfair  text-center text-uppercase text-White" style="font-weight: bold; letter-spacing: 3px;"> Explore your desired home</h2>
+                    </div>
+                    <div class="row mt-1 mb-1 margin-top-20 justify-content-center">
+                        <!-- <div style="background-color:#f1f1f1 !important;"> -->
+                        <nav class="navbar navbar-expand-lg navbar-light justify-content-center">
+                            <ul class="navbar-nav justify-content-center">
+                                <li class="nav-item margin-right-10">
+                                    <!-- <label for="buyRent">Buy / Rent</label> -->
+                                    <select id="buyRent" class="form-control web-select width_set" (change)="changeBuyRent($event)">
+                                        <option selected disabled>Select Buy / Rent</option>
+                                        <option value="Buy">Buy</option>
+                                        <option value="Rent">Rent</option>
+                                    </select>
+                                </li>
+                                <li class="nav-item margin-right-10">
+                                    <!-- <label for="type">Select Property Type</label> -->
+                                    <select id="type" class="form-control web-select width_set" (change)="changePropertyType($event)">
+                                        <option selected disabled>Select Property Type</option>
+                                        <option *ngFor="let type of propertyType" value="{{type._id}}">{{type.name}}</option>
+                                    </select>
+                                </li>
+                                <li class="nav-item margin-right-10">
+                                    <!-- <label for="country">Select Country</label> -->
+                                    <select id="country" class="form-control web-select width_set" (change)="valueChangeofCountry($event)">
+                                        <option selected disabled>Select Country</option>
+                                        <option *ngFor="let c of country" value="{{c._id}}">{{c.name}}</option>
+                                    </select>
+                                </li>
+                                <li class="nav-item margin-right-10">
+                                    <!-- <label for="city">Select City</label> -->
+                                    <select id="city" class="form-control web-select width_set" (change)="changeCity($event)">
+                                        <option selected disabled>Select City</option>
+                                        <option *ngFor="let c of city" value="{{c._id}}">{{c.name}}</option>
+                                    </select>
+                                </li>
+                                <li class="nav-item margin-right-10">
+                                    <button id="btn" class="btn web-select width_set" (click)="search()">Search</button>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- </div> -->
+                    </div>
+                </div>
+
+                <h1 style="font-size: 3em;font-family: 'Playfair Display SC', cursive !important; text-shadow: 1mm 1mm 3px black; color:#ffffff; z-index: 2; position: absolute; top:45%; left:0; right:0; text-align: center; font-weight: 700;" class="font-lobster responsive_title">Samsarcom</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <!-- end slider -->
+
+    <div class="row w3-white">
+        <div class="col-md-12">
+            <hr class="style-eight" />
+            <br />
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="row justify-content-center bg-ionic-light">
+
+    <div class="col-md-8 col-12 margin-top-20 margin-bottom-20">
+        <h2 class="font-playfair text-dark-grey text-center" style="font-weight: bold; letter-spacing: 2px">How  we work for you ?</h2>
+        <h5 class="text-center font-robo margin-top-20 w3-text-grey">
+            Donec semper rutrum ipsum et bibendum. Sed condimentum dolor velit semper rutrum ipsum et velit semper bibendum.
+        </h5>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="row justify-content-center bg-ionic-light padding-bottom-20">
+    <div class="col-md-3 hvr-float-shadow single-col margin-top-20" data-aos="fade-up">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center margin-20">
+                <i class="fas hvr-rotate cols-icon-3 fa-question-circle text-semantic-blue fa-4x"></i>
+            </div>
+            <div class="col-12 margin-top-20">
+                <h3 class="text-center font-concret text-semantic-blue">Semper rutrum</h3>
+                <p class="text-center font-robo">
+                    Donec semper rutrum ipsum et bibendum. Sed condimentum dolor velit semper rutrum ipsum et velit semper bibendum.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 hvr-float-shadow single-col margin-top-20" data-aos="fade-up" data-aos-delay="300">
+
+        <div class="row justify-content-center">
+            <div class="col-12 text-center margin-20">
+                <i class="fas cols-icon-3 fa-envelope text-semantic-blue fa-4x"></i>
+            </div>
+            <div class="col-12 margin-top-20">
+                <h4 class="text-center font-concret text-semantic-blue">Condimentum</h4>
+                <p class="text-center font-robo">
+                    Donec semper rutrum ipsum et bibendum. Sed condimentum dolor velit semper rutrum ipsum et velit semper bibendum.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 hvr-float-shadow single-col margin-top-20" data-aos="fade-up" data-aos-delay="600">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center margin-20">
+                <!-- <img class="wellcome-icon" src="assets/home/user.png">  -->
+                <i class="fas cols-icon-3 fa-user text-semantic-blue fa-4x"></i>
+            </div>
+            <div class="col-12 margin-top-20">
+                <h4 class="text-center font-concret text-semantic-blue">Rutrum ipsum</h4>
+                <p class="text-center font-robo">
+                    Donec semper rutrum ipsum et bibendum. Sed condimentum dolor velit semper rutrum ipsum et velit semper bibendum.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 2 Part Div -->
+<div class="clearfix"></div>
+<div class="row  bg-Teal">
+    <div class="left-layout d-none d-sm-block bg-semantic-blue">
+        <div class="left-inside">
+            <span class="text-semantic-white bg-w3-green text-bold font-patua font-22" data-aos="fade-up">
+                <i class="fas fa-dollar-sign font-32 "></i>
+                <i class="fas fa-dollar-sign font-32 "></i>
+                <i class="fas fa-dollar-sign font-32 "></i>
+                B U Y / R E N T
+            </span>
+            <br>
+            <span data-aos="fade-right" class="font-playfair badge badge-warning font-32 text-bold left-inside-text-shadow responsive_sett">Your Own Properties !</span>
+        </div>
+    </div>
+    <div class="right-layout d-none d-sm-block bg-Teal">
+        <div class="right-inside bg-Teal">
+            <p class="font-28 font-patua title_set_respo" data-aos="fade-down"><i class="fas fa-phone right-inside-transform"></i> WE ARE READY TO HEAR FROM YOU.</p>
+            <p class="badge badge-info text-semantic-white font-22" data-aos="fade-down" data-aos-delay='200'> +32 489 088 585</p>
+            <br>
+            <p class="badge badge-info  font-22" data-aos="fade-down" data-aos-delay='500'> info@samsarcom.be</p>
+        </div>
+    </div>
+</div>
+
+<!-- 2 Part Div Finished -->
+<div class="clearfix"></div>
+
+<!-- Features -->
+<div class="row justify-content-center bg-ionic-light" style=" background-size: cover;  background-position: center right; min-height: 650px">
+    <div class="col-md-12 col-sm-12 margin-top-20">
+        <br />
+        <hr class="style-eight" />
+        <br />
+        <h2 class="font-playfair text-dark-grey text-center" style="font-weight: bold; letter-spacing: 2px">Our Services</h2>
+        <div class="row">
+            <div class="col-xs-12 col-md-6" style="color: #535">
+                <br />
+                <br />
+                <ul style="padding-left: 25px">
+                    <li>
+                        <div>
+                            <h4 class="font-robo"><i class="fas fa-star"></i> MORTGAGE </h4>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h4 class="font-robo"><i class="fas fa-star"></i> RENTALS </h4>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h4 class="font-robo"><i class="fas fa-star"></i> OFFICE SPACE </h4>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                            </p>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <h4 class="font-robo"><i class="fas fa-star"></i> LOANS </h4>
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                            </p>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="col-xs-12 col-md-6 text-center" data-aos="fade-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+                <img src="assets/images/services.gif" class="img-fluid home_img_service">
+            </div>
+
+            <div class="row justify-content-center margin-top-20 margin-bottom-20">
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row" style="height: 500px; background-image: url('assets/images/services-parallax.jpg'); background-attachment: fixed; background-size: cover; ">
+    <h1 class="font-raleway text-center" data-aos="slide-right" data-aos-delay='300' data-aos-duration='1000' style="width:90%; display:inline; font-weight: bolder; margin:auto; font-size:2.5em; color:#ffffff !important; text-shadow: 0 0 3px black; ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. W</h1>
+</div>
+
+<!-- Props to Rent -->
+<div class="row w3-white">
+    <div class="col-md-12">
+        <br />
+        <hr class="style-eight" />
+        <br />
+    </div>
+</div>
+<div class="row justify-content-center bg-White">
+
+    <div class="col-md-12 margin-top-20">
+        <h2 class="font-playfair text-dark-grey text-center" style="font-weight: bold; letter-spacing: 2px">Properties to Rent</h2>
+    </div>
+
+    <div class="row d-md-none d-lg-none">
+        <div class="col-md-1">
+            <a class="carousel-control-prev" href="#myCarouselRent" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+        </div>
+            <div class="col-md-1">
+            <a class="carousel-control-next" href="#myCarouselRent" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-md-1 d-none d-sm-block">
+        <a class="carousel-control-prev" href="#myCarouselRent" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+    </div>
+
+    <div class="col-md-10 margin-bottom-20">
+
+        <div id="myCarouselRent" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+
+                <h1 class="font-robo text-center" *ngIf="!Rent || Rent.length == 0"> <i class="fas fa-circle-notch fa-spin w3-text-blue"></i> </h1>
+                <div *ngFor="let rentProperty of Rent; let k = index " [ngClass]="k == 0 ? 'carousel-item active' : 'carousel-item'">
+                    <div class="row row-eq-height justify-content-arround" style="padding: 1%;" *ngIf="rentProperties.length>0">
+                        <div class="col-md-4 col-sm-12 ipad_two_box margin-top-20" *ngFor=" let property of rentProperties">
+                            <div class="card-deck">
+                                <div class="card">
+                                    <div class="m-2 d-flex justify-content-center" *ngIf="property.images && property.images.length<=0" (click)="viewDetails(property._id)">
+                                        <img class="img-fluid fix-heigth" src="./assets/images/logo.png" alt="imagesUrl" onerror="this.src = './assets/images/noImage.png'">
+                                    </div>
+                                    <div class="m-2 d-flex justify-content-center" *ngIf="property.images.length>0" (click)="viewDetails(property._id)">
+                                        <img class="img-fluid fix-heigth" [src]="image_url + property.images[0]" onerror="this.src='./assets/images/noImage.png'" alt="imagesUrl">
+                                    </div>
+                                    <fieldset (click)="viewDetails(property._id)">
+                                        <span class="samsar-font text-bold">{{property.uniqueId}}
+                                    </span>
+                                    </fieldset>
+                                    <fieldset (click)="viewDetails(property._id)">
+                                        <label class="font-Trebuchet text-bold font-18 no-padding color-property-details">Property Details</label>
+                                        <table class="tb-property">
+                                            <tr>
+                                                <td width="30%" class="align-top">
+                                                    Price :
+                                                </td>
+                                                <td width="70%" class="align-top">&euro; {{property.price}} <span *ngIf="property.garage == true"> <br>Garage Included</span> <span *ngIf="property.garden == true"><br>Garden Included</span> <span *ngIf="property.swimmingPool == true"> <br>Swimming Pool Included</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Area Size :
+                                                </td>
+                                                <td>
+                                                    {{property.area}} - Rooms: {{property.rooms}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Address :
+                                                </td>
+                                                <td class="extra-content">
+                                                    {{property.propertyAddress}}
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Postal Code :
+                                                </td>
+                                                <td>
+                                                    {{property.postalCode}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    City :
+                                                </td>
+                                                <td>
+                                                    {{property.city.name}}
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Country :
+                                                </td>
+                                                <td>
+                                                    {{property.country.name}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Status :
+                                                </td>
+                                                <td>
+                                                    {{property.status}}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </fieldset>
+
+                                    <div class="container justify-content-arround margin-bottom-10 margin-top-10" *ngIf="userType == 0" style="margin-top: auto !important;bottom: 0px !important;">
+                                        <div class="row padding-left-10 padding-right-10">
+
+                                            <a class="col-6 btn btn-contact" href="tel:{{property.agent.phone}}"><i class="fa fa-phone fa-flip-horizontal margin-right-5" title="{{property.agent.phone}}"></i>Phone</a>
+
+                                            <a class="col-6 btn btn-contact" href="mailto:{{property.agent.email}}" target="_top"><i class="far fa-envelope margin-right-5" title="{{property.agent.email}}"></i>Email</a>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="container margin-bottom-10 margin-top-10 justify-content-arround" *ngIf="userType != 0" style="margin-top: auto !important;bottom: 0px !important;">
+                                        <div class="row padding-left-10 padding-right-10">
+                                            <a class="col-6 btn btn-contact" href="tel:+32 489088585"><i class="fa fa-phone fa-flip-horizontal margin-right-5"></i> Phone</a>
+                                            <a class=" col-6 btn btn-contact" href="mailto:info@samsarcom.be" target="_top"><i class="far fa-envelope margin-right-5"></i> Email</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button (click)="buyOrRent('Rent')" class="btn btn-outline-success float-right margin-top-20">Show more<i class="fas fa-angle-double-right margin-left-5"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-1 d-none d-sm-block">
+        <a class="carousel-control-next" href="#myCarouselRent" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+
+    <!----<div class="row d-md-none d-lg-none">
+        <div class="col-md-1">
+            <a class="carousel-control-prev" href="#myCarouselRent" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+        </div>
+            <div class="col-md-1">
+            <a class="carousel-control-next" href="#myCarouselRent" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </div>--->
+</div>
+
+<!-- END Rent Proerties -->
+
+<!-- Overview -->
+<div class="row justify-content-center img-back w3-red">
+    <div class=" text-center col-12 offers-bg">
+        <h1 class="font-playfair margin-top-15 text-White offers-shadow" style="font-weight: 600; text-shadow: 0 0 1px black">Samsar Offers  </h1>
+
+        <div class="row">
+            <div class="padding-15 col-12 col-md-4" data-aos="flip-left" data-aos-delay='0'>
+                <div class="offers-inner-icon bg-White padding-25">
+                    <img src="assets/icons/rent-1.png" />
+                    <h2 class="timer count-title count-number w3-text-black" data-to="300" data-speed="1500">100+ </h2>
+                    <h4><span class="badge badge-primary">Properties to Rent..!</span></h4>
+                </div>
+            </div>
+
+            <div class=" col-12 col-md-4 padding-15" data-aos="flip-left" data-aos-delay='300'>
+                <div class="offers-inner-icon bg-White padding-25">
+                    <img src="assets/icons/buy-1.png" />
+                    <h2 class="timer count-title count-number w3-text-black" data-to="300" data-speed="1500">250+ </h2>
+                    <h4><span class="badge badge-primary">Properties to Buy..!</span></h4>
+                </div>
+            </div>
+
+            <div class=" col-12 col-md-4 padding-15 end" data-aos="flip-left" data-aos-delay='600'>
+                <div class="offers-inner-icon bg-White padding-25">
+                    <img src="assets/icons/group.png" />
+                    <h2 class="timer count-title count-number w3-text-black" data-to="300" data-speed="1500">250+ </h2>
+                    <h4><span class="badge badge-primary">Users..!</span></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Buy Properties -->
+<div class="row w3-white">
+    <div class="col-md-12">
+        <br />
+        <hr class="style-eight" />
+        <br />
+    </div>
+</div>
+
+<div class="row justify-content-center bg-White">
+    <div class="col-md-12 margin-top-20">
+        <h2 class="font-playfair text-dark-grey text-center" style="font-weight: bold; letter-spacing: 2px">
+            Properties to Buy
+        </h2>
+    </div>
+
+    <div class="row d-md-none d-lg-none">
+        <div class="col-md-1">
+            <a class="carousel-control-prev" href="#myCarouselBuy" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+        </div>
+            <div class="col-md-1">
+            <a class="carousel-control-next" href="#myCarouselBuy" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </div>
+
+    <div class="col-md-1 d-none d-sm-block">
+        <a class="carousel-control-prev" href="#myCarouselBuy" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+    </div>
+
+    <div class="col-md-10 margin-bottom-20">
+
+        <div id="myCarouselBuy" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+
+                <h1 class="font-robo text-center" *ngIf="!Buy || Buy.length == 0"> <i class="fas fa-circle-notch fa-spin w3-text-blue"></i> </h1>
+                <div *ngFor="let buyProperties of Buy; let k = index " [ngClass]="k == 0 ? 'carousel-item active' : 'carousel-item'">
+
+                    <div class="row row-eq-height justify-content-between" style="padding: 1%;" *ngIf="buyProperties.length>0">
+
+                        <div class="col-md-4 col-sm-12 ipad_two_box margin-top-20" *ngFor=" let property of buyProperties">
+
+                            <div class="card-deck">
+
+                                <div class="card">
+                                    <div class="m-2 d-flex justify-content-center" *ngIf="property.images && property.images.length<=0" (click)="viewDetails(property._id)">
+                                        <img class="img-fluid fix-heigth" src="assets/images/noImage.png" alt="imagesUrl">
+                                    </div>
+                                    <div class="m-2 d-flex justify-content-center" *ngIf="property.images.length>0" (click)="viewDetails(property._id)">
+                                        <img class="img-fluid fix-heigth" [src]="image_url + property.images[0]" onerror="this.src='./assets/images/noImage.png'" alt="imagesUrl">
+                                    </div>
+                                    <fieldset (click)="viewDetails(property._id)">
+                                        <span class="samsar-font text-bold">{{property.uniqueId}}
+                                    </span>
+                                    </fieldset>
+                                    <fieldset (click)="viewDetails(property._id)">
+                                        <label class="font-Trebuchet text-bold font-18 no-padding color-property-details">Property Details</label>
+                                        <table class="tb-property">
+                                            <tr>
+                                                <td class="align-top">
+                                                    Price :
+                                                </td>
+                                                <td class="align-top">&euro; {{property.price}} <span *ngIf="property.garage == true" class="text extra-content"> <br>Garage Included</span> <span *ngIf="property.garden == true" class="text extra-content"><br>Garden Included</span> <span *ngIf="property.swimmingPool == true" class="text extra-content"> <br>Swimming Pool Included</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="extra-content">
+                                                    Area Size :
+                                                </td>
+                                                <td class="extra-content">
+                                                    {{property.area}} - Rooms: {{property.rooms}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Address :
+                                                </td>
+                                                <td class="extra-content">
+                                                    {{property.propertyAddress}}
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Postal Code :
+                                                </td>
+                                                <td>
+                                                    {{property.postalCode}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    City :
+                                                </td>
+                                                <td>
+                                                    {{property.city.name}}
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Country :
+                                                </td>
+                                                <td>
+                                                    {{property.country.name}}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Status :
+                                                </td>
+                                                <td>
+                                                    {{property.status}}
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </fieldset>
+
+                                    <div class="container justify-content-arround margin-bottom-10 margin-top-10" *ngIf="userType == 0" style="margin-top: auto !important;bottom: 0px !important;">
+                                        <div class="row padding-left-10 padding-right-10">
+
+                                            <a class="col-6 btn btn-contact" href="tel:{{property.agent.phone}}"><i class="fa fa-phone fa-flip-horizontal margin-right-5" title="{{property.agent.phone}}"></i>Phone</a>
+
+                                            <a class="col-6 btn btn-contact" href="mailto:{{property.agent.email}}" target="_top"><i class="far fa-envelope margin-right-5" title="{{property.agent.email}}"></i>Email</a>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="container margin-bottom-10 margin-top-10 justify-content-arround" *ngIf="userType != 0" style="margin-top: auto !important;bottom: 0px !important;">
+                                        <div class="row padding-left-10 padding-right-10">
+                                            <a class="col-6 btn btn-contact" href="tel:+32 489088585"><i class="fa fa-phone fa-flip-horizontal margin-right-5"></i> Phone</a>
+                                            <a class=" col-6 btn btn-contact" href="mailto:info@samsarcom.be" target="_top"><i class="far fa-envelope margin-right-5"></i> Email</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <button (click)="buyOrRent('Buy')" class="btn btn-outline-success float-right margin-top-20">Show more<i class="fas fa-angle-double-right margin-left-5"></i></button>
+    </div>
+
+    <div class="col-md-1 d-none d-sm-block">
+        <a class="carousel-control-next" href="#myCarouselBuy" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+
+    <!----<div class="row d-md-none d-lg-none">
+        <div class="col-md-1">
+            <a class="carousel-control-prev" href="#myCarouselBuy" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+        </div>
+            <div class="col-md-1">
+            <a class="carousel-control-next" href="#myCarouselBuy" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </div> -->
+</div>
+
+<!-- Buy Properties -->

@@ -1,0 +1,149 @@
+<div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px',fullScreenBackdrop:true }"></ngx-loading>
+</div>
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-12">
+        <div class="card my-5 shadow">
+            <div class="card-body">
+                <div class="page-header text-center">
+                    <h2 class="font-patua text-center margin-top-20"><i class="far fa-building margin-right-10"></i>Register New Property</h2>	
+                </div>
+
+                <fieldset class="margin-top-20">
+
+                    <form [formGroup]="createProperty" (ngSubmit)="create(createProperty.value)">
+
+                        <div class="form-group" ng2-auto-complete [source]="Type" (valueChanged)="valueChangedOfType($event)">
+                           <input type="text" id="propertyType" class="form-control font-Palatino" formControlName="propertyType" placeholder="Property Type">
+                       </div>
+                       <div class="form-group">
+                        <textarea id="propertyAddress" class="form-control font-Palatino" formControlName="propertyAddress" placeholder="Address"></textarea>
+                    </div>
+                    <div [hidden] = 'userType == 1' class="form-group" ng2-auto-complete [source]="users" (valueChanged)="valueChangedOfagent($event)">
+                        <input type="text" id="agent" class="form-control font-Palatino" formControlName="agent" placeholder="Agent Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="postalCode" class="form-control font-Palatino" formControlName="postalCode" placeholder="Postal Code">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="area" class="form-control font-Palatino" formControlName="area" placeholder="Area">
+                    </div>
+                    <div class="form-group"><!-- ng2-auto-complete [source]="country" (valueChanged)="valueChangedOfCountry($event)" -->
+                        <!-- <input type="text" id="country" class="form-control font-Palatino" formControlName="country" [(ngModel)]="country" autocomplete="off" placeholder="Enter Country"> -->
+                        <select class="form-control font-Palatino" id="country" (change)="valueChangedOfCountry($event.target.value)">
+                            <option selected disabled>Select Country</option>
+                            <option *ngFor="let c of country" value="{{c}}">{{c}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <div ng2-auto-complete [source]="City" (valueChanged)="valueChangedOfCity($event)">
+                           <input type="text" id="city" class="form-control font-Palatino" formControlName="city" [(ngModel)]="city" placeholder="City" autocomplete="off" (change)="checkCity(city)"> 
+                       </div>
+                   </div>
+                   <div class="form-group">
+                       <label class="w3-text-grey">Is your city missing ? </label>
+                       <button class="btn btn-info font-Palatino" type="button" (click)="addCity()" [disabled]="!selectedCountry.country"><i class="fa fa-plus margin-left-5"></i>Add City</button>
+                   </div>
+
+                   <form class="justify-content-center no-padding" [hidden]="flag==false">
+                    <div class="row" >
+                        <div class="form-group col-12 col-md-6" >
+                            <input type="text" class="form-control font-Palatino" id="newCity" [(ngModel)]="newCity" name="newCity" placeholder="New City" required>
+                        </div>
+                        <div class="form-group col-12 col-md-6">
+                            <input type="text" class="form-control font-Palatino" id="newState" [(ngModel)]="newState" name="newState" placeholder="New State" required>
+                        </div>
+                    </div>
+                    <div class="row"> 
+                        <div class="form-group col-md-6 col-12">
+                            <button class="btn btn-success font-Palatino col-sm-6 col-md-3 " type="button" (click)="saveTheCity()" [disabled]="!newCity || !newState"><i class="fa fa-save margin-left-5"></i> Save</button>
+                            <button class="btn btn-danger font-Palatino col-sm-6 col-md-3 col-md-offset-1" type="button" (click)="cancle()"><i class="fa fa-ban margin-left-5"></i> Discard</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="form-group">
+                    <input type="text" id="state" class="form-control font-Palatino" formControlName="state" [(ngModel)]="state" placeholder="State" readonly>
+                </div>
+
+                <div class="form-group">
+                    <!-- <input type="number" id="rooms" class="form-control input-number" [(ngModel)]="rooms" formControlName="rooms" min="1" max="10" placeholder="How many Rooms?"> -->
+                    <select class="form-control font-Palatino" id="rooms" (change)="changeRoom($event)">
+                        <option selected disabled>How many Rooms?</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <!-- <input type="text" id="currency" class="form-control font-Palatino" formControlName="currency" placeholder="Enter Currency"> -->
+                        <select class="form-control font-Palatino" id="currency" (change)="changeCurrency($event.target.value)">
+                            <option disabled>Select Currency</option>
+                            <option selected value="euro">Euro</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-9">
+                        <input type="number" min="0" step="1000" id="price" class="form-control font-Palatino" formControlName="price" placeholder="Price">
+                    </div>
+                </div>
+                        <!-- <label for="location">Enter Location Details</label>
+                        <div id="location" class="row">
+                                <div class="form-group col-md-6">
+                                        <input type="text" id="lon" class="form-control font-Palatino" formControlName="lon" placeholder="Enter Longitude">
+                                </div>
+                                <div class="form-group col-md-6">
+                                        <input type="text" id="lat" class="form-control font-Palatino" formControlName="lat" placeholder="Enter Latitude">
+                                </div>
+                            </div> -->
+                            <div class="form-group">
+                                <label>Sell / Rent</label>
+                                <div class="form-check">
+                                    <input type="radio" class="with-gap" id="buy" formControlName="buyRent" value="Buy">
+                                    <label for="buy">Sell</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" class="with-gap" id="rent" formControlName="buyRent" value="Rent">
+                                    <label for="rent">Rent</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="additionalInfo" class="form-control font-Palatino md-textarea" rows="5" formControlName="additionalInfo" placeholder="Additional Information"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-4 text-center">
+                                    <p class="">Has Garden?</p>
+                                    <label class="switch">
+                                        <input type="checkbox" id="garden" formControlName="garden" value="false">
+                                        <span class="slider round top-0"></span>
+                                    </label>
+
+                                </div>
+                                <div class="form-group col-md-4 text-center">
+                                    <p>Has Garage?</p>
+                                    <label class="switch">
+                                        <input type="checkbox" id="garage" formControlName="garage" value="false">
+                                        <span class="slider round top-0" ></span>
+                                    </label>
+                                </div>
+                                <div class="form-group col-md-4 text-center">
+                                    <p>Has Swimming Pool?</p>
+                                    <label class="switch">
+                                        <input type="checkbox" id="swimmingPool" formControlName="swimmingPool" value="false">
+                                        <span class="slider round top-0" ></span>
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="col-12 text-center py-4 mt-3">
+                                <button type="submit" class="btn btn-samsar" [disabled]="!createProperty.valid">Register New Property</button>
+                            </div>
+                        </form>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+

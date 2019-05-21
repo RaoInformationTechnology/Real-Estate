@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-toolbar color="myColor">
+    <ion-title>
+      Filters &amp; Sorting
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios" style="color: #ffffff;">Cancel</span>
+        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background all_input_responsive" padding>
+  <ion-list margin-bottom>
+    <ion-list-header text-center style="background:none; border:none;">
+      Filters
+    </ion-list-header>
+    <!-- <ion-item class="form-group" margin-horizontal no-padding>
+      <label>Buy / Rent</label>
+      <ion-item-group class="form-check" margin-top>
+        <input type="radio" class="with-gap" id="buy" [(ngModel)]="filter.buyRent" value="Buy">
+        <label for="buy" class="margin">Buy</label>
+
+        <input type="radio" class="with-gap" id="rent" [(ngModel)]="filter.buyRent" value="Rent">
+        <label for="rent">Rent</label>
+      </ion-item-group> 
+    </ion-item> -->
+
+    <ion-item class="border margin-top">
+      <ion-label>Buy / Rent</ion-label>
+      <ion-select [(ngModel)]="filterModal.buyRent">
+        <ion-option value="Buy">Buy</ion-option>
+        <ion-option value="Rent">Rent</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="border margin-top">
+      <ion-label>Select Property Type</ion-label>
+      <ion-select [(ngModel)]="filterModal.propertyType">
+        <ion-option *ngFor="let type of propertyTypes" value="{{type._id}}">{{type.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="border margin-top">
+      <ion-label>Select Country</ion-label>
+      <ion-select [(ngModel)]="filterModal.country" (ionChange)="changeCountry(filterModal.country)">
+        <ion-option *ngFor="let country of countries" value="{{country._id}}">{{country.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-item class="border margin-top">
+      <ion-label>Select a City / an Area</ion-label>
+      <ion-select [(ngModel)]="filterModal.city">
+        <ion-option *ngFor="let city of cities" value="{{city._id}}">{{city.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="range">
+      <ion-label>Select Prize Range</ion-label>
+      <ion-range dualKnobs="true" pin="true" [(ngModel)]="minMax" color="myColor" min="0" max="500000" step="5000">
+        <ion-label range-left small>Min</ion-label>
+        <ion-label range-right>Max</ion-label>
+      </ion-range>
+    </ion-item>
+
+    <ion-row>
+      <ion-item class="border margin-top">
+        <ion-label>Want Garden?</ion-label>
+        <ion-toggle name="garden" [(ngModel)]="other.garden" checked="false"></ion-toggle>
+      </ion-item>
+
+      <ion-item class="border margin-top">
+        <ion-label>Want Garage?</ion-label>
+        <ion-toggle name="garage" [(ngModel)]="other.garage" checked="false"></ion-toggle>
+      </ion-item>
+
+      <ion-item class="border margin-top">
+        <ion-label>Want Swimming Pool?</ion-label>
+        <ion-toggle name="swimmingPool" [(ngModel)]="other.swimmingPool" checked="false"></ion-toggle>
+      </ion-item>
+    </ion-row>
+  </ion-list>
+
+  <ion-list margin-bottom radio-group [(ngModel)]="sort" (ionChange)="doSorting($event)">
+    <ion-list-header text-center style="background:none; border:none;">
+      Sorts
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>New First</ion-label>
+      <ion-radio value="new"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Old First</ion-label>
+      <ion-radio value="old"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Price: Low to High</ion-label>
+      <ion-radio value="lowToHigh"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Price: High to Low</ion-label>
+      <ion-radio value="highToLow"></ion-radio>
+    </ion-item>
+  </ion-list>
+  <button ion-button full block [ngStyle]="{'background-color': buttonColor}" (click)="showFilters()" style="color: white; font-weight: 700; font-size: 15px;">Apply</button>
+</ion-content>

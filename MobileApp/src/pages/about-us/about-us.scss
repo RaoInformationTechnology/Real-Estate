@@ -1,0 +1,31 @@
+page-about-us {
+	.background{
+		background-image: url('../assets/imgs/background(2).jpg');
+		background-repeat: no-repeat;
+		background-size:100% 100%;
+		background-position:center bottom;
+	}
+
+	.fix-heigth{
+		height: 175px !important;
+		width: auto;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.full-height{
+		max-height: 100% !important;
+		height: 100%;
+	}
+}
+
+.title-responsive {
+    font-family: -apple-system, "Helvetica Neue", "Roboto", sans-serif;
+    text-align: center !important;
+    font-weight: 500;
+    letter-spacing: normal;
+    text-transform: uppercase;
+    color: #000;
+    margin: 11px 8px 11px 0;
+    font-size:17px !important;
+}

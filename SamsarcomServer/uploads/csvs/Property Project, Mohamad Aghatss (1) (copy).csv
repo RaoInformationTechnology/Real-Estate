@@ -1,0 +1,40 @@
+propertyType,propertyAddress,agent,postalCode,city,state,country,status,price,currency,rooms,area,buyRent,garage,garden,swimmingPool,lat,lon,additionalInfo,image1,image2,image3
+Building,2645 Vahlen Alley,5ab37ead20bcfd7b5fdf6fa6,61605,Peoria,Illinois,United States,Available,216253,Dollar,359,Sugar,Rent,false,true,false,40.6775,-89.6263,Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.,https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Googlelogo.png/800px-Googlelogo.png,https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Googlelogo.png/800px-Googlelogo.png,https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Googlelogo.png/800px-Googlelogo.png
+Flat,403 Canary Road,5ab37ead20bcfd7b5fdf6fa6,60505,Aurora,Illinois,United States,Available,640953,Dollar,460,Chive,Rent,false,true,false,41.7582,-88.2971,"Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.
+
+Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.
+
+Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.
+
+Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.",https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Googlelogo.png/800px-Googlelogo.png,https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Googlelogo.png/800px-Googlelogo.png,https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Googlelogo.png/800px-Googlelogo.png
+Flat,6633 Lukken Place,5ab37ead20bcfd7b5fdf6fa6,68505,Lincoln,Nebraska,United States,Unavailable,523494,Dollar,33,Oak,Rent,false,true,false,40.8247,-96.6252,"Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.
+
+In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.
+
+Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.
+
+Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Googlelogo.png/800px-Googlelogo.png,https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Googlelogo.png/800px-Googlelogo.png,https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Googlelogo.png/800px-Googlelogo.png
+Building,9 Oriole Drive,5ab37ead20bcfd7b5fdf6fa6,80044,Aurora,Colorado,United States,Available,427438,Dollar,424,Dexter,Rent,false,true,false,39.7388,-104.4083,"Pellentesque at nulla. Suspendisse potenti. Cras in purus eu magna vulputate luctus.
+
+Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+
+Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.
+
+Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.
+
+Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",http://dummyimage.com/131x184.jpg/5fa2dd/ffffff,http://dummyimage.com/118x182.jpg/dddddd/000000,http://dummyimage.com/166x146.jpg/cc0000/ffffff
+Building,91257 Granby Point,5ab37ead20bcfd7b5fdf6fa6,20231,Washington,District of Columbia,United States,Unavailable,708259,Dollar,64,Monica,Rent,true,true,false,38.8933,-77.0146,"Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.
+
+Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.
+
+Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.",http://dummyimage.com/118x249.jpg/cc0000/ffffff,http://dummyimage.com/138x209.jpg/ff4444/ffffff,http://dummyimage.com/165x242.jpg/cc0000/ffffff
+Flat,7394 Summit Junction,5ab37ead20bcfd7b5fdf6fa6,98109,Seattle,Washington,United States,Available,478254,Dollar,261,Burrows,Rent,false,false,true,47.6339,-122.3476,"Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.
+
+Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.
+
+Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.",http://dummyimage.com/209x171.jpg/ff4444/ffffff,http://dummyimage.com/222x242.jpg/ff4444/ffffff,http://dummyimage.com/189x238.jpg/dddddd/000000
+Building,4061 Parkside Road,5ab37ead20bcfd7b5fdf6fa6,20520,Washington,District of Columbia,United States,Unavailable,971240,Dollar,371,Bayside,Rent,false,true,false,38.8932,-77.049,"Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.
+
+Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+
+Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.",http://dummyimage.com/240x180.jpg/cc0000/ffffff,http://dummyimage.com/223x186.jpg/5fa2dd/ffffff,http://dummyimage.com/218x125.jpg/ff4444/ffffff

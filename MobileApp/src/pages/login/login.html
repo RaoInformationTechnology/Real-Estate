@@ -1,0 +1,47 @@
+<ion-header>
+	<ion-navbar color="myColor">
+		<ion-title margin-vertical>Login</ion-title>
+	</ion-navbar>
+
+</ion-header>
+
+<ion-content class="background bg_input" padding>
+	<div class="row" justify-content-center style=" max-height: 100%;">
+		<div col-12 col-sm-8 col-md-8>
+			<div class="row" >
+				<img class="img-fluid image" src="./assets/imgs/samsarLogo.png" alt="Login Image" style="padding: 0px;">
+				
+			</div>
+			<ion-list margin-top>
+
+				<div class="row" justify-content-center>
+					
+					<ion-item>
+						<ion-input type="text" [(ngModel)]="user.email" name="user_name" placeholder="Username"></ion-input>
+					</ion-item>
+
+					<ion-item margin-top>
+						<ion-input type="password" [(ngModel)]="user.password" name="password" placeholder="Password" (keyup.enter)="doLogin()"></ion-input>
+					</ion-item>
+
+
+					<ion-grid>
+						<ion-row>
+							<ion-col col-6 style="padding-left: 0px; ">
+								<button class="samsar-btn" text-capitalize full ion-button (click)="doLogin()" [ngStyle]="{'background-color': buttonColor}">Sign in</button>
+							</ion-col>
+							<ion-col col-6 style="padding-right: 0px; ">
+								<button class="samsar-btn" text-capitalize full ion-button (click)="dosignup()" [ngStyle]="{'background-color': buttonColor}" >Sign up</button>
+							</ion-col>
+						</ion-row>
+					</ion-grid>
+				</div>
+
+			</ion-list>
+			<!-- <ion-list text-center>
+				<button ion-button round fixed (click)="socialSignIn('facebook')"><i class="fab fa-facebook-f"></i>&nbsp;Sign up with Facebook</button>
+				<button ion-button round fixed (click)="socialSignIn('google')" color="danger"><i class="fab fa-google"></i>&nbsp;Signin in with Google</button>
+			</ion-list> -->
+		</div>
+	</div>
+</ion-content>

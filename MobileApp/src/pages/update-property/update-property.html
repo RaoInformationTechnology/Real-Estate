@@ -1,0 +1,118 @@
+<ion-header>
+	<ion-navbar color="myColor">
+		<ion-title>{{headerName}} Property Details</ion-title>
+	</ion-navbar>
+</ion-header>
+
+
+<ion-content class="background" padding>
+	<!-- <ion-card padding> -->
+		<form class="form-horizontal all_input_responsive">
+			<ion-list>
+				<ion-label class="text title-responsive">Property Details </ion-label>
+				<ion-item class="border">
+					<ion-label>Select Property Type</ion-label>
+					<ion-select name="propertyType" [(ngModel)]="propertyTypeID" (ionChange)="changeType(propertyTypeID)">
+						<ion-option *ngFor="let type of propertyType" value={{type._id}}>{{type.name}}</ion-option>
+					</ion-select>
+				</ion-item>
+				<ion-item no-padding margin-vertical style="height: 100px;">
+					<ion-textarea name="propertyAddress" [(ngModel)]="property.propertyAddress" placeholder="Address" maxLength="500" rows="4"></ion-textarea>
+				</ion-item>
+
+				<ion-item no-padding margin-vertical>
+					<ion-input type="text" name="postalCode" [(ngModel)]="property.postalCode" placeholder="Postal code"></ion-input>
+				</ion-item>
+
+				<ion-item class="border" margin-vertical>
+					<ion-label>Select Country</ion-label>
+					<ion-select name="country" [(ngModel)]="countryId" (ionChange)="changeCountry(countryId)">
+						<ion-option *ngFor="let country of countries" value={{country._id}}>{{country.name}}</ion-option>
+					</ion-select>
+				</ion-item>
+
+
+				<ion-item class="border" margin-vertical>
+					<ion-label>Select a City / an Area</ion-label>
+					<ion-select name="city" [(ngModel)]="cityId" (ionChange)="changeCity(cityId)">
+						<ion-option *ngFor="let city of cities" value={{city._id}}>{{city.name}}</ion-option>
+					</ion-select>
+				</ion-item>
+
+				<ion-item no-padding margin-vertical>
+					<ion-input type="text" id="state" class="form-control" name=" placeholder" [(ngModel)]="property.state" placeholder="Enter State"></ion-input>
+				</ion-item>
+
+				<ion-item no-padding margin-vertical>
+					<ion-input type="text" id="area" class="form-control" name="area" [(ngModel)]="property.area" placeholder="Enter Area"></ion-input>
+				</ion-item>
+
+				<ion-item no-padding margin-vertical>
+					<!-- <button margin-left ion-button icon-only item-left color="danger" (click)="decrement()">
+						<ion-icon name="remove-circle"></ion-icon>
+					</button> -->
+					<ion-input type="number" id="rooms" class="form-control" name="rooms" [(ngModel)]="property.rooms" placeholder="How many rooms?"></ion-input>
+					<!-- <button ion-button icon-only item-right color="success" (click)="increment()">
+						<ion-icon name="add-circle"></ion-icon>
+					</button> -->
+				</ion-item>
+
+				<!-- <ion-item no-padding margin-vertical>
+					<ion-input type="text" id="currency" class="form-control" name="currency" [(ngModel)]="property.currency" placeholder="Enter Currency"></ion-input>
+				</ion-item> -->
+
+				<ion-item class="border" margin-vertical>
+					<ion-label>Select Currency</ion-label>
+					<ion-select name="currency" [ngModel]="property.currency" (ionChange)="changeCurrency(property.currency)">
+						<ion-option value="euro">Euro</ion-option>
+					</ion-select>
+				</ion-item>
+
+				<ion-item no-padding margin-vertical>
+					<ion-input type="text" id="price" class="form-control" name="price" [(ngModel)]="property.price" placeholder="Enter Price"></ion-input>
+				</ion-item>
+				<!-- <ion-item no-padding margin-vertical>
+					<ion-input type="text" id="lon" class="form-control" name="lon" [(ngModel)]="property.lon" placeholder="Enter Longitude"></ion-input>
+				</ion-item>
+				<ion-item no-padding margin-vertical>
+					<ion-input type="text" id="lat" class="form-control" name="lat" [(ngModel)]="property.lat" placeholder="Enter Latitude"></ion-input>
+				</ion-item> -->
+				<ion-item class="form-group no-border-bottom" padding>
+					<label>Sell / Rent</label>
+					<ion-item-group class="form-check" margin-top>
+						<input type="radio" class="with-gap" name="buyRent" [(ngModel)]="property.buyRent" value="Buy">
+						<label for="buy" class="margin">Sell</label>
+
+						<input type="radio" class="with-gap" name="buyRent" [(ngModel)]="property.buyRent" value="Rent">
+						<label for="rent">Rent</label>
+					</ion-item-group> 
+				</ion-item>
+
+				<ion-item no-padding margin-vertical style="height: 100px;">
+					<ion-textarea name="additionalInfo" [(ngModel)]="property.additionalInfo" placeholder="Additional Information" rows="4"></ion-textarea>
+				</ion-item>
+
+				<ion-item margin-top>
+					<ion-label>Has Garden?</ion-label>
+					<ion-toggle name="garden" [(ngModel)]="property.garden" checked="false"></ion-toggle>
+				</ion-item>
+
+				<ion-item margin-top>
+					<ion-label>Has Garage?</ion-label>
+					<ion-toggle name="garage" [(ngModel)]="property.garage" checked="false"></ion-toggle>
+				</ion-item>
+
+				<ion-item margin-top>
+					<ion-label>Has Swimming Pool?</ion-label>
+					<ion-toggle name="swimmingPool" [(ngModel)]="property.swimmingPool" checked="false"></ion-toggle>
+				</ion-item>
+			</ion-list>
+			<div text-center>
+				<button ion-button type="submit" style="color: white;
+    font-weight: 700;
+    font-size: 15px; border-radius: 0px;" block class="samsar-btn" [ngStyle]="{'background-color': buttonColor}" (click)="update(property)">Update
+				</button>
+			</div>
+		</form>
+	<!-- </ion-card> -->
+</ion-content>

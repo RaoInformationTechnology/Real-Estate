@@ -1,0 +1,125 @@
+<div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px',fullScreenBackdrop:true }"></ngx-loading>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-12 col-sm-12 margin-top-20 margin-bottom-20">
+        <div class="page-header">
+            <h2 class="font-patua text-center"><i class="fas fa-search margin-right-10"></i>Search By Property Unique ID</h2>
+        </div>
+
+        <div class="row justify-content-center margin-top-20 margin-bottom-20">
+            <div class="col-10 col-sm-10">
+                <div class="input-group input-group-lg">
+                    <input type="text" class="form-control" placeholder="Search Property By ID" [(ngModel)]="id" autocomplete="off" (keyup.enter)="search()" style="z-index: 0;">
+                    <div class="input-group-append" style="height: 45px !important;">
+                        <span class="btn btn-outline-secondary" style="z-index: 0;" (click)="search()"><img src="./assets/icons/home-with-zoom.png" class="margin-bottom-5" style="height: 29px !important;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center" *ngIf="allProperty">
+            <div class="col-md-4 col-11 margin-top-20" *ngFor=" let property of allProperty"  data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
+                 <div class="card-deck">
+                    <div class="card mb-3">
+                        <div class="m-2 d-flex justify-content-center" *ngIf="property.images.length<=0" (click) = "viewDetails(property._id)">
+
+                            <img class="img-fluid fix-heigth" src="./assets/images/noImage.png" alt="imagesUrl">
+                        </div>
+                        <div class="m-2 d-flex justify-content-center" *ngIf="property.images.length>0" (click) = "viewDetails(property._id)">
+
+                            <img class="img-fluid fix-heigth" [src]="image_url + property.images[0]" onerror="this.src='./assets/images/noImage.png'"   alt="imagesUrl">
+                        </div>
+                        <fieldset (click) = "viewDetails(property._id)">
+                            <div class="col-sm-12 col-md-12 text-left">
+                                <p class="font-Palatino no-margin-bottom" *ngIf= "property.uniqueId"><strong><span class="margin-left-5">{{property.uniqueId}}</span></strong>
+                                </p>
+
+                            </div>
+                        </fieldset>
+                        <fieldset (click) = "viewDetails(property._id)">
+                            <div class="col-sm-12 col-md-12 text-left">
+                                <label class="font-Trebuchet text-bold font-18  no-padding" style="color: #bbbbb8 !important;">Property Details</label>
+                                <table class="tb-property">
+                                    <tr>
+                                        <td width="30%" class="align-top">
+                                            Price :	
+                                        </td>
+                                        <td width="70%" class="align-top">
+                                            &euro; {{property.price}} <span *ngIf= "property.garage == true" class="extra-content"><br>Garage Included</span><span *ngIf= "property.garden == true" class="extra-content"><br>Garden Included</span><span class="extra-content" *ngIf= "property.swimmingPool == true"><br>Swimming Pool Included</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Area Size :
+                                        </td>
+                                        <td >
+                                            {{property.area}} - Rooms: {{property.rooms}}							
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Address : 
+
+                                        </td>
+                                        <td class="extra-content">
+                                            {{property.propertyAddress}}
+
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            City : 
+                                        </td>
+                                        <td>
+                                            {{property.city.name}}
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Country : 		
+                                        </td>
+                                        <td>
+                                            {{property.country.name}}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Status :		
+                                        </td>
+                                        <td>
+                                            {{property.status}}		
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </fieldset>
+                        <div class="container justify-content-arround margin-bottom-10 margin-top-10" *ngIf="userType == 0">
+                            <div class="row padding-left-10 padding-right-10">
+
+                                <a class="col-6 btn btn-contact" href="tel:{{property.agent.phone}}"><i class="fa fa-phone fa-flip-horizontal margin-right-5" title="{{property.agent.phone}}"></i>Phone</a>
+
+                                <a class="col-6 btn btn-contact" href="mailto:{{property.agent.email}}" target="_top"><i class="far fa-envelope margin-right-5" title="{{property.agent.email}}"></i>Email</a>
+                            </div>
+
+                        </div>
+
+                        <div class="container margin-bottom-10 margin-top-10 justify-content-arround"  *ngIf="userType != 0">
+                            <div class="row padding-left-10 padding-right-10">
+                                <a class="col-6 btn btn-contact" href="tel:+32 489088585"><i class="fa fa-phone fa-flip-horizontal margin-right-5"></i> Phone</a>
+                                <a class=" col-6 btn btn-contact" href="mailto:info@samsarcom.be" target="_top"><i class="far fa-envelope margin-right-5"></i> Email</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center" *ngIf="allProperty.length == 0" style="margin-top: 150px!important">
+            <span id="nopropertySearch" class="font-24 font-patua"><i class="fa fa-list"></i>&nbsp;No Property Searched</span>
+            <span id="nopropertyfound" class="font-24 font-patua" style="display: none;"><i class="fa fa-search"></i>&nbsp;No Property Found</span>
+        </div>
+    </div>
+</div>

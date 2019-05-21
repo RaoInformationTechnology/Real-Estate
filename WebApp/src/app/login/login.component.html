@@ -1,0 +1,73 @@
+<div style="background-image: url('assets/images/single-red-stripe-vector-hd-wallpaper-2560x1600-7151.jpg'); background-size: cover; background-attachment: fixed; min-height: 100vh">
+    <div class="my-container">
+        <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px', fullScreenBackdrop:true }"></ngx-loading>
+    </div>
+    <div class="container">
+        <div class="card card-container" data-aos="flip-left">
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="needs-validation form-signin margin-top-10" novalidate  #loginForm="ngForm" (submit)="doLogin(loginDetails)" >
+                  <span id="reauth-email" class="reauth-email"></span>
+                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" [(ngModel)]="loginDetails.email" required autofocus>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" [(ngModel)]="loginDetails.password" required>
+                <button class="btn btn-primary text-center " type="submit"> <i class="fas fa-sign-in-alt w3-left margin-top-5"></i>
+
+                    Sign in</button>
+            </form><!-- /form -->
+            <a (click)="openModel()" class="forgot-password" style="cursor: pointer;">
+                Reset the password?
+            </a>
+            <hr>
+            <a routerLink='/signup' class="btn btn-success text-center ">
+                <i class="fas fa-user-plus fa-fw w3-left margin-top-5" ></i> Signup with SamsarCom</a>
+            <button class="loginBtn loginBtn--facebook btn btn-block margin-top-10 text-white" (click)="socialSignIn('facebook')" >
+                <i class="fab fa-facebook-square fa-fw w3-left margin-top-5" ></i> Login with Facebook
+            </button>
+            <button class="loginBtn loginBtn--google btn btn-block text-white" (click)="socialSignIn('google')">
+                <i class="fab fa-google fa-fw w3-left margin-top-5"></i>  Login with Google
+            </button>
+            <!--  		<button routerLink='/signup' class="loginBtn btn btn-block">
+                                    <i class="fas fa-user-plus margin-right-10"></i> Sign up
+                            </button> -->
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="passwordModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Reset Password</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="passwordForm">
+                        <div class="form-group">
+                            <input type="email" name="email" formControlName="email" placeholder="Enter Your Email" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" name="password" formControlName="password" placeholder="Enter Old Password" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" name="newPassword" formControlName="newPassword" placeholder="Enter New Password" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" name="confirmNewPassword" formControlName="confirmNewPassword" placeholder="Re-Enter New Password" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-primary" [disabled]="passwordForm.invalid" (click)="changePassword(passwordForm.value)">Change</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

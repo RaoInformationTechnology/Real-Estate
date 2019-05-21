@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar color="myColor">
+    <ion-title>
+      Update User Details
+    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <span ion-text color="primary" showWhen="ios" style="color: #ffffff;">Cancel</span>
+        <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background" padding>
+  <form class="form-forizontal all_input_responsive">
+    <legend class="text-bold title-responsive" text-center>
+      Personal Information
+    </legend>
+    <ion-list>
+      <ion-item margin-top>
+        <ion-input type="text" id="fname" class="form-control" [(ngModel)]="user.firstName" name="firstName" placeholder="Enter Your First Name"></ion-input>
+      </ion-item>
+
+      <ion-item margin-top>
+        <ion-input type="text" id="lname" class="form-control" [(ngModel)]="user.lastName" name="lastName" placeholder="Enter Your Last Name"></ion-input>
+      </ion-item>
+
+      <ion-item margin-top>
+        <ion-input type="email" id="email" class="form-control" [(ngModel)]="user.email" name="email" placeholder="Enter Your Email-ID"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <legend class="text-bold title-responsive" text-center> Contact Information </legend>
+    <ion-list>
+      <ion-item margin-top>
+        <ion-input type="text" id="phone" class="form-control" [(ngModel)]="user.phone" name="phone" placeholder="Enter Your Phone Number"></ion-input>
+      </ion-item>
+
+      <ion-item margin-top>
+        <ion-input type="text" id="mobile" class="form-control" [(ngModel)]="user.mobile" name="mobile" placeholder="Enter Your Mobile Number"></ion-input>
+      </ion-item>
+
+      <ion-item margin-top>
+        <ion-input type="text" id="address" class="form-control md-textarea" [(ngModel)]="user.address" name="address" placeholder="Enter Your Address"></ion-input>
+      </ion-item>
+
+      <!-- <ion-item class="border" margin-top *ngIf="countryId">
+        <ion-label>Select Country</ion-label>
+        <ion-select [(ngModel)]="countryId" (ionChange)="changeCountry(countryId)" name="country">
+          <ion-option *ngFor="let country of countries" value={{country._id}}>{{country.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+
+      <ion-item class="border" margin-top *ngIf="city">
+        <ion-label>Select a City / an Area</ion-label>
+        <ion-select [(ngModel)]="city" (ionChange)="changeCity(city)" name="city">
+          <ion-option *ngFor="let city of cities" value={{city._id}}>{{city.name}}</ion-option>
+        </ion-select>
+      </ion-item> -->
+
+      <ion-item margin-top>
+              <ion-label>Select Country</ion-label>
+              <ion-select [(ngModel)]="countryId" (ionChange)="changeCountry(countryId)" name="country">
+                <ion-option *ngFor="let country of countries" value={{country._id}}>{{country.name}}</ion-option>
+              </ion-select>
+              <!-- <ion-input type="text" id="country" class="form-control" [(ngModel)]="user.country" name="country" placeholder="Enter Your Country"></ion-input> -->
+            </ion-item>
+
+
+            <ion-item margin-top>
+              <ion-label>Select a City / an Area</ion-label>
+              <ion-select [(ngModel)]="city" (ionChange)="changeCity(city)" name="city">
+                <ion-option *ngFor="let city of cities" value={{city._id}}>{{city.name}}</ion-option>
+              </ion-select>
+              <!-- <ion-input type="text" id="city" class="form-control" [(ngModel)]="user.city" name="city" placeholder="Enter Your City"></ion-input> -->
+            </ion-item>
+
+      <ion-item margin-top>
+        <ion-input type="text" id="state" class="form-control" [(ngModel)]="user.state" name="state" placeholder="Enter State"></ion-input>
+      </ion-item>
+
+      <ion-item margin-top>
+        <ion-input type="text" id="postalCode" class="form-control" [(ngModel)]="user.postalCode" name="postalCode" placeholder="Enter Postal Code"></ion-input>
+      </ion-item>
+
+      <ion-item margin-top>
+        <ion-input type="text" id="company" class="form-control" [(ngModel)]="user.company" name="company" placeholder="Enter Your Company"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div text-center>
+      <button ion-button large type="submit" class="samsar-btn" (click)="update(user)" style="border-radius: 0px;color: white;
+    font-weight: 700;
+    font-size: 15px; width: 100%;"><i class="fas fa-upload" margin-right></i> Update
+      </button>
+    </div>
+  </form>
+</ion-content>

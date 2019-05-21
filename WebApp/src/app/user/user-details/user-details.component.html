@@ -1,0 +1,169 @@
+<div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px',fullScreenBackdrop:true }"></ngx-loading>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-9 col-11 margin-top-20">
+        <div class="page-header text-center margin-top-20 margin-bottom-10">
+            <h2 class="font-patua"><i class="fas fa-user-md margin-right-5"></i> Agent Details
+            </h2>
+        </div>
+
+        <div class="card cursor-pointer margin-bottom-20" *ngIf="user">
+            <div class="card-header bg-transparent">
+                <h4 class="text-bold margin-top-5 samsar-font"> {{user.firstName}} {{user.lastName}} <span class="w3-right" *ngIf="user.userStatus == 'false'" title="User status"> <span class="badge badge-danger">Blocked</span></span>
+                    <span class="w3-right" *ngIf="user.userStatus == 'true'" title="User status"> <span class="badge badge-success">Active</span></span>
+                </h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12 col-12">
+                        <div class="row border-bottom">
+                            <div class="col-6 col-md-3">
+                                <span class="font-Trebuchet font-16 text-bold respo_text_input">Address : 
+                                </span>
+                            </div>
+                            <div class="col-6 col-md-9">
+                                <span class="font-Verdana font-14">{{user.address}}
+                                </span>
+                            </div>						
+                        </div>
+                        <div class="row border-bottom">
+                            <div class="col-6 col-md-3">
+                                <span class="font-Trebuchet font-16 text-bold respo_text_input">
+                                    City : 
+                                </span> 
+                            </div>
+                            <div class="col-6 col-md-9">
+                                <span class="font-Verdana font-14">
+                                    {{user.city}}
+                                </span>
+                            </div>						
+                        </div>
+                        <div class="row border-bottom">
+                            <div class="col-6 col-md-3">
+                                <span class="font-Trebuchet font-16 text-bold respo_text_input">
+                                    State : 
+                                </span> 
+                            </div>
+                            <div class="col-6 col-md-9">
+                                <span class="font-Verdana font-14">
+                                    {{user.state}}
+                                </span>
+                            </div>						
+                        </div>
+
+                        <div class="row border-bottom">
+                            <div class="col-6 col-md-3">
+                                <span class="font-Trebuchet font-16 text-bold respo_text_input">
+                                    Postal Code : 
+                                </span> 
+                            </div>
+                            <div class="col-6 col-md-9">
+                                <span class="font-Verdana font-14">
+                                    {{user.postalCode}}
+                                </span>
+                            </div>						
+                        </div>
+
+                        <div class="row border-bottom">
+                            <div class="col-6 col-md-3">
+                                <span class="font-Trebuchet font-16 text-bold respo_text_input">Country : </span> 
+                            </div>
+                            <div class="col-6 col-md-9">
+                                <span class="font-Verdana font-14">
+                                    {{user.country}}
+                                </span>
+                            </div>						
+                        </div>
+
+                        <div class="row border-bottom">
+                            <div class="col-6 col-md-3">
+                                <span class="font-Trebuchet font-16 text-bold respo_text_input">
+                                    Email : 
+                                </span> 
+                            </div>
+                            <div class="col-6 col-md-9">
+                                <span class="font-Verdana font-14">
+                                    {{user.email}}
+                                </span>
+                            </div>						
+                        </div>
+
+                        <div class="row border-bottom">
+                            <div class="col-6 col-md-3">
+                                <span class="font-Trebuchet font-16 text-bold respo_text_input">
+                                    Mobile Number : 
+                                </span> 
+                            </div>
+                            <div class="col-6 col-md-9">
+                                <span class="font-Verdana font-14">
+                                    {{user.mobile}}
+                                </span>
+                            </div>						
+                        </div>
+
+                        <div class="row border-bottom">
+                            <div class="col-6 col-md-3">
+                                <span class="font-Trebuchet font-16 text-bold respo_text_input">
+                                    Phone Number :
+                                </span> 
+                            </div>
+                            <div class="col-6 col-md-9">
+                                <span class="font-Verdana font-14">
+                                    {{user.phone}}
+                                </span>
+                            </div>						
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 col-md-3">
+                                <span class="font-Trebuchet font-16 text-bold respo_text_input">Company : 
+                                </span> 
+                            </div>
+                            <div class="col-6 col-md-9">
+                                <span class="font-Verdana font-14">
+                                    {{user.company}}
+                                </span>
+                            </div>						
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-6 margin-top-10 col-sm-12" *ngIf ="userType == 1">
+                        <button class="btn btn-primary btn-block btn-md" routerLink="/userUpdate/{{user._id}}" title="Update {{user.firstName}} {{user.lastName}} Details"> <i class="far fa-edit margin-right-5"></i> Update Your Details
+                        </button>
+                    </div>
+                    <div class="col-md-6 margin-top-10 col-sm-12" *ngIf ="userType == 1">
+                        <button class="btn btn-info btn-block btn-md" title="{{user.firstName}} {{user.lastName}} Property Details"  (click)="userPropertyDetails()"><i class="fas fa-building margin-right-5"></i> Your Properties
+                            <span class="badge badge-dark margin-left-10">{{user.propertyCount}}</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row justify-content-center" *ngIf ="userType == 0">
+                    <div class="col-md-6 col-sm-12 margin-top-10">
+
+                        <button class="btn btn-info btn-block btn-md" title="{{user.firstName}} {{user.lastName}} Property Details"  (click)="userPropertyDetails()"><i class="fas fa-building margin-right-5"></i> Properties Of {{user.firstName}} {{user.lastName}}
+                            <span class="badge badge-dark margin-left-10">{{user.propertyCount}}</span>
+                        </button>
+                    </div>
+                    <div class="col-md-6 col-sm-12 margin-top-10">
+
+                        <button class="btn btn-success btn-block btn-md" title="Activate {{user.firstName}} {{user.lastName}}" *ngIf = "user.userStatus == 'false'" (click)="togglestatus(user)"> Unblock User
+                        </button>
+                        <button class="btn btn-danger btn-block btn-md" title="Block {{user.firstName}} {{user.lastName}}" *ngIf="user.userStatus == 'true'" (click)="togglestatus(user)"><i class="fas fa-ban margin-right-5"></i> Block User
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div *ngIf="!user">
+            <div class="text-center margin-top-25">
+                <i class="fa fa-spinner fa-spin"></i>
+            </div>
+        </div>
+    </div>
+</div>

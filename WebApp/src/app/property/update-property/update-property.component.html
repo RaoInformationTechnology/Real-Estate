@@ -1,0 +1,128 @@
+<div class="my-container">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '0px',fullScreenBackdrop:true }"></ngx-loading>
+</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-12">
+            <div class="card my-5 shadow">
+                <div class="card-body">
+                    <div class="page-header">
+                        <h1 class="font-patua text-center margin-top-20">Update Property</h1>	
+
+                    </div>
+                    <fieldset class="margin-top-10">
+                        <legend class="text-bold text-center margin-bottom-10" runat="server" visible="true" style="width:auto; margin-bottom: 0px;">Property Details
+                        </legend>
+                        <form *ngIf = "propertyToUpdate">
+                            <div class="form-group" ng2-auto-complete [source]="Type" (valueChanged)="valueChangedOfType($event)">
+                                 <input type="text" id="propertyType" class="form-control" [(ngModel)]="propertyToUpdate.propertyType.name" name="propertyType" placeholder="Enter Property Type">
+                            </div>
+                            <div class="form-group">
+                                <textarea id="propertyAddress" class="form-control" [(ngModel)]="propertyToUpdate.propertyAddress" name="propertyAddress" placeholder="Address"></textarea>
+                            </div>
+                            <div class="form-group" ng2-auto-complete [source]="users" (valueChanged)="valueChangedOfagent($event)">
+                                 <input type="text" id="agent" class="form-control" [(ngModel)]="propertyToUpdate.agent.firstName" name="agent" placeholder="Enter Agent Name" autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="postalCode" class="form-control" [(ngModel)]="propertyToUpdate.postalCode" name="postalCode" placeholder="Postal Code">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="area" class="form-control" [(ngModel)]="propertyToUpdate.area" name="area" placeholder="Enter Area">
+                            </div>
+                            <div class="form-group" *ngIf="propertyToUpdate.country"> <!-- ng2-auto-complete [source]="country" (valueChanged)="valueChangedOfCountry($event)" -->
+                                <!-- <input type="text" id="country" class="form-control font-Palatino" [(ngModel)]="propertyToUpdate.country.name" autocomplete="off"  name="country" placeholder="Enter Country"> -->
+                                <select class="form-control font-Palatino" id="country" [(ngModel)]="propertyToUpdate.country.name" name="country" (change)="valueChangedOfCountry($event.target.value)">
+                                    <option selected disabled>Select Country</option>
+                                    <option *ngFor="let c of country" value="{{c}}">{{c}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group" ng2-auto-complete [source]="City" (valueChanged)="valueChangedOfCity($event)" *ngIf="propertyToUpdate.city">
+                                 <input type="text" id="city" class="form-control" [(ngModel)]="propertyToUpdate.city.name" name="city" placeholder="Enter City" autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="state" class="form-control" [(ngModel)]="propertyToUpdate.state" name="state" placeholder="Enter State">
+                            </div>
+                            <!-- <div class="form-group" *ngIf="propertyToUpdate.country">
+                                    <input type="text" id="country" class="form-control" [(ngModel)]="propertyToUpdate.country.name" name="country" placeholder="Enter Country">
+                            </div> -->
+                            <div class="form-group">
+                                <!-- <input type="text" id="rooms" class="form-control" [(ngModel)]="propertyToUpdate.rooms" name="rooms" placeholder="How many rooms?"> -->
+                                <select class="form-control font-Palatino" id="rooms" [(ngModel)]="propertyToUpdate.rooms" name="rooms">
+                                    <option selected disabled>How many Rooms?</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <div class="row justify-content-between">
+                                <div class="form-group col-md-3">
+                                    <!-- <input type="text" id="currency" class="form-control" [(ngModel)]="propertyToUpdate.currency" name="currency" placeholder="Enter Currency"> -->
+                                    <select class="form-control font-Palatino" id="currency" [(ngModel)]="propertyToUpdate.currency" name="currency">
+                                        <option disabled>Select Currency</option>
+                                        <option selected value="euro">Euro</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-9">
+                                    <input type="text" id="price" class="form-control" [(ngModel)]="propertyToUpdate.price" name="price" placeholder="Enter Price">
+                                </div>
+                            </div>
+                            <!-- <div class="row">
+                                    <div class="form-group col-md-6">
+                                            <input type="text" id="lon" class="form-control" [(ngModel)]="propertyToUpdate.lon" name="lon" placeholder="Enter Longitude">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                            <input type="text" id="lat" class="form-control" [(ngModel)]="propertyToUpdate.lat" name="lat" placeholder="Enter Latitude">
+                                    </div>
+                            </div> -->
+                            <div class="form-group text-left">
+                                <label>Sell / Rent</label>
+                                <div class="form-check">
+                                    <input type="radio" class="with-gap" id="buy" [(ngModel)]="propertyToUpdate.buyRent" name="buyRent" value="Buy">
+                                    <label for="buy">Sell</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="radio" class="with-gap" id="rent" [(ngModel)]="propertyToUpdate.buyRent" name="buyRent" value="Rent">
+                                    <label for="rent">Rent</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="additionalInfo" class="form-control md-textarea" [(ngModel)]="propertyToUpdate.additionalInfo" name="additionalInfo" rows="5" placeholder="Additional Information"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-4 text-center">
+                                    <p class="">Has Garden?</p>
+                                    <label class="switch">
+                                        <input type="checkbox" id="garden" [(ngModel)]="propertyToUpdate.garden" name="garden" value="false">
+                                        <span class="slider round" style="top:0 !important"></span>
+                                    </label>
+                                </div>
+                                <div class="form-group col-md-4 text-center">
+                                    <p>Has Garage?</p>
+                                    <label class="switch">
+                                        <input type="checkbox" id="garage" [(ngModel)]="propertyToUpdate.garage" name="garage" value="false">
+                                        <span class="slider round" style="top:0 !important"></span>
+                                    </label>
+                                </div>
+                                <div class="form-group col-md-4 text-center">
+                                    <p>Has Swimming Pool?</p>
+                                    <label class="switch">
+                                        <input type="checkbox" id="swimmingPool" [(ngModel)]="propertyToUpdate.swimmingPool" name="swimmingPool" value="false">
+                                        <span class="slider round" style="top:0 !important"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center py-4 mt-3">
+                                <button type="submit" style="width: 100%;" class="btn btn-success" (click)="update(propertyToUpdate)">Update Property Details</button>
+                            </div>
+                            <div class="col-12 text-center py-4 mt-3">
+                                <button style="width: 100%;" class="btn btn-primary button-font" (click)="updatePropertyImage(propertyToUpdate._id)">Update Property Image OR Location</button>
+                            </div>
+                        </form>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

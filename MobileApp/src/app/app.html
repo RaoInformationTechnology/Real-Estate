@@ -1,0 +1,37 @@
+<ion-menu [content]="content" id="menu1" side="right" class="border_none">
+  <ion-header>
+    <ion-toolbar color="myGray">
+      <ion-list>
+        <ion-item class="background" margin-vertical (click)="myProfile()">
+          <ion-avatar item-start>
+            <img src="./assets/imgs/userIcon.png" class="rounded-circle" height="50" width="50">
+          </ion-avatar>
+          <h5 class="bold">{{name}}</h5>
+        </ion-item>
+      </ion-list>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list *ngIf="userType=='Agent'">
+      <button color="myColor" menuClose ion-item *ngFor="let p of agentPages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+
+    <ion-list *ngIf="userType=='BlockedAgent'">
+      <button color="myColor" menuClose ion-item *ngFor="let p of blockUserPages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+
+    <ion-list *ngIf="userType=='Guest'">
+      <button color="myColor" menuClose ion-item *ngFor="let p of guestPages" (click)="openPage(p)">
+        {{p.title}}
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

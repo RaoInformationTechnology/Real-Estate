@@ -1,0 +1,161 @@
+page-add-listing {
+    .border{
+        border: 1px solid #d9dbdc;
+        height: 10px;
+        margin: 5px 0 5px 0;
+    }
+
+    .background{
+        background-image: url('../assets/imgs/background(2).jpg');
+        background-repeat: no-repeat;
+        background-size:100% 100%;
+        background-position:center bottom;
+    }
+
+    .border-round{
+        border: 1px solid #d9dbdc;
+        border-radius: 5px;
+        height: 10px;
+        margin: 5px 0 5px 0;
+    }
+
+    .samsar-btn{
+        background-color: #0b7997;
+    }
+
+    .item-md.item-block .item-inner {
+        padding-right: 0;
+        border-bottom: none;
+    }
+
+    .bg-color{
+        background-color: #0b7997;
+    }
+
+    .hidden{
+        display: none;
+    }
+
+    ion-toggle{
+        $toggle-background-color-on: #0b7997;
+    }
+
+    .label-md {
+        margin: 13px 0px 13px 0;
+    }
+
+    .item-md .item-button {
+        padding: 0 0.6em;
+        height: 36px;
+        font-size: 1.2rem;
+    }
+
+    .toggle-md.toggle-checked .toggle-icon {
+        background-color: rgb(170,170,170);
+    }
+
+    .toggle-md.toggle-checked .toggle-inner {
+        -webkit-transform: translate3d(16px, 0, 0);
+        transform: translate3d(16px, 0, 0);
+        background-color: #0b7997;
+    }
+
+    .margin{
+        margin-right: 15px !important;
+    }
+
+    .select-text{
+        color: gray;
+    }
+
+    .text{
+        font-size: 20px;
+    }
+    @media only screen and (min-width:320px)  {
+        .title-ios{
+            margin-top:0px !important;
+        }
+    }
+}
+
+.all_input_responsive .item.item-textarea {
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    border: 1px solid #d9dbdc;
+    padding-left: 16px;
+}
+
+.all_input_responsive .list-ios .item-block .item-inner {
+    border-bottom: 0px;
+}
+
+.all_input_responsive ion-app.ios{
+    margin-top: 16px;
+    margin-bottom: 16px;
+    padding-left: 16px;
+    border: 1px solid #d9dbdc;
+}
+
+.all_input_responsive .item-ios {
+    padding-left: 16px;
+    padding-left: 16px;
+    border-radius: 0;
+    position: relative;
+    font-size: 1.7rem;
+    color: #000;
+    background-color: rgba(255,255,255,0.7);
+    -webkit-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
+    border: 1px solid #d9dbdc;
+}
+
+.all_input_responsive ion-app.md{
+    margin-top: 16px;
+    margin-bottom: 16px;
+    padding-left: 16px;
+    border: 1px solid #d9dbdc;
+}
+
+.all_input_responsive .item-md {
+    padding-left: 16px;
+    padding-left: 16px;
+    border-radius: 0;
+    position: relative;
+    font-size: 1.7rem;
+    color: #000;
+    background-color: rgba(255,255,255,0.7);
+    -webkit-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
+    border: 1px solid #d9dbdc;
+}
+.all_input_responsive .responsive_set{
+    margin-left: 0px !important;
+}
+
+ion-input, textarea {
+  box-shadow:none !important;
+  border: none !important;
+  outline:none !important;
+}
+ 
+input[type=text]:focus, textarea:focus {
+  box-shadow:none !important;
+  border: none !important;
+  outline:none !important;
+  border-bottom-color: transparent !important; 
+
+}
+
+.title-responsive {
+    font-family: -apple-system, "Helvetica Neue", "Roboto", sans-serif;
+    text-align: center !important;
+    font-weight: 500;
+    letter-spacing: normal;
+    text-transform: uppercase;
+    color: #000;
+    margin: 11px 8px 11px 0;
+    font-size:17px !important;
+}
+
