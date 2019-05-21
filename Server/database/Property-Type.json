@@ -1,0 +1,3 @@
+{ "_id" : { "$oid" : "5ab1f0651e63030d4cd09ca5" }, "description" : "Demo1", "language" : "Hindi", "name" : "Building", "__v" : 0 }
+{ "_id" : { "$oid" : "5ab1f9371e63030d4cd09ca7" }, "description" : "3 BHK Flat", "language" : "English", "name" : "Flat", "__v" : 0 }
+{ "_id" : { "$oid" : "5ac8581614d0de35ed36bada" }, "description" : "Open Area", "language" : "English", "name" : "Plato", "__v" : 0 }
